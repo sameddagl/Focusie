@@ -10,7 +10,6 @@
 		2CB2B9DC29367E4C00C71FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2B9DB29367E4C00C71FD3 /* AppDelegate.swift */; };
 		2CB2B9DE29367E4C00C71FD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2B9DD29367E4C00C71FD3 /* SceneDelegate.swift */; };
 		2CB2B9E029367E4C00C71FD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2B9DF29367E4C00C71FD3 /* ViewController.swift */; };
-		2CB2B9E329367E4C00C71FD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CB2B9E129367E4C00C71FD3 /* Main.storyboard */; };
 		2CB2B9E529367E4E00C71FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CB2B9E429367E4E00C71FD3 /* Assets.xcassets */; };
 		2CB2B9E829367E4E00C71FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CB2B9E629367E4E00C71FD3 /* LaunchScreen.storyboard */; };
 		2CB2B9F329367E4E00C71FD3 /* FocusieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2B9F229367E4E00C71FD3 /* FocusieTests.swift */; };
@@ -40,7 +39,6 @@
 		2CB2B9DB29367E4C00C71FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CB2B9DD29367E4C00C71FD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CB2B9DF29367E4C00C71FD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2CB2B9E229367E4C00C71FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CB2B9E429367E4E00C71FD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CB2B9E729367E4E00C71FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CB2B9E929367E4E00C71FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				2CB2B9DB29367E4C00C71FD3 /* AppDelegate.swift */,
 				2CB2B9DD29367E4C00C71FD3 /* SceneDelegate.swift */,
 				2CB2B9DF29367E4C00C71FD3 /* ViewController.swift */,
-				2CB2B9E129367E4C00C71FD3 /* Main.storyboard */,
 				2CB2B9E429367E4E00C71FD3 /* Assets.xcassets */,
 				2CB2B9E629367E4E00C71FD3 /* LaunchScreen.storyboard */,
 				2CB2B9E929367E4E00C71FD3 /* Info.plist */,
@@ -233,7 +230,6 @@
 			files = (
 				2CB2B9E829367E4E00C71FD3 /* LaunchScreen.storyboard in Resources */,
 				2CB2B9E529367E4E00C71FD3 /* Assets.xcassets in Resources */,
-				2CB2B9E329367E4C00C71FD3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2CB2B9E129367E4C00C71FD3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2CB2B9E229367E4C00C71FD3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2CB2B9E629367E4E00C71FD3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -440,11 +428,14 @@
 				DEVELOPMENT_TEAM = 49Z33V7QZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Focusie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,9 +443,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagl.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -468,11 +462,14 @@
 				DEVELOPMENT_TEAM = 49Z33V7QZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Focusie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -480,9 +477,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagl.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
