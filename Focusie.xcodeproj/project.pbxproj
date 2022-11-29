@@ -17,6 +17,7 @@
 		2CB2BA17293690CA00C71FD3 /* HomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA16293690CA00C71FD3 /* HomeContracts.swift */; };
 		2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1829369E1400C71FD3 /* HomeVCBuilder.swift */; };
 		2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */; };
+		2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		2CB2BA16293690CA00C71FD3 /* HomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContracts.swift; sourceTree = "<group>"; };
 		2CB2BA1829369E1400C71FD3 /* HomeVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCBuilder.swift; sourceTree = "<group>"; };
 		2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTimeLabel.swift; sourceTree = "<group>"; };
+		2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */,
+				2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				2CB2BA17293690CA00C71FD3 /* HomeContracts.swift in Sources */,
 				2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */,
+				2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */,
 				2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */,
 				2CB2BA132936908800C71FD3 /* HomeVC.swift in Sources */,
 				2CB2B9DC29367E4C00C71FD3 /* AppDelegate.swift in Sources */,

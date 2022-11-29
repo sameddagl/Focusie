@@ -16,23 +16,37 @@ final class HomeViewModel: HomeViewModelProtocol {
         case longBreak
     }
     
-    var focusTime: Double = 25
-    var shortBreakTime: Double = 5
-    var longBreakTime: Double = 15
+    private var focusTime: Double = 25
+    private var shortBreakTime: Double = 5
+    private var longBreakTime: Double = 15
     
-    var currentTime: TimeInterval = 5
-    var currentState: States = .focus
-    var counter = 0
-
-    var timer: Timer?
+    private var currentTime: TimeInterval!
+    private var currentState: States = .focus
+    private var counter = 0
+    private var canStartTimer = true
+    
+    private var timer: Timer?
     
     func startTimer() {
+        if canStartTimer {
+            canStartTimer = false
+            currentTime = focusTime
+            guard timer == nil else { return }
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+        }
+        else {
+            continueTimer()
+        }
+    }
+    
+    func continueTimer() {
         guard timer == nil else { return }
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
     
-    func stopTimer() {
+    func pauseTimer() {
         timer?.invalidate()
+        timer = nil
     }
     
     func endTimer() {
@@ -43,6 +57,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         focusTime = 25
         shortBreakTime = 5
         longBreakTime = 15
+        canStartTimer = true
     }
     
     @objc private func fireTimer() {

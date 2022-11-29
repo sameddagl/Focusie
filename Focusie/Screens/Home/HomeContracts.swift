@@ -10,7 +10,8 @@ import Foundation
 protocol HomeViewModelProtocol {
     var delegate: HomeViewModelDelegate? { get set }
     func startTimer()
-    func stopTimer()
+    func continueTimer()
+    func pauseTimer()
     func endTimer()
 }
 
