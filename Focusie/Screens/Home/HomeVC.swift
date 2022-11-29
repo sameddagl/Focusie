@@ -15,7 +15,6 @@ final class HomeVC: UIViewController {
     
     var viewModel: HomeViewModelProtocol!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -62,7 +61,7 @@ extension HomeVC {
     
     private func layout() {
         bgImageView.image = UIImage(named: "BGImage")
-        bgImageView.alpha = 0.6
+        bgImageView.alpha = 0.9
         bgImageView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(bgImageView)

@@ -19,8 +19,9 @@ final class FCActionButton: UIButton {
         
         layer.cornerRadius = 10
         
-        backgroundColor = .systemPink
-        tintColor = .white
+        backgroundColor = .systemGreen
+        tintColor = .label
+        
         setImage(UIImage(systemName: "play.fill"), for: .normal)
         setImage(UIImage(systemName: "pause.fill"), for: .selected)
         

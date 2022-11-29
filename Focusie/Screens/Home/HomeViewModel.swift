@@ -31,6 +31,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         if canStartTimer {
             canStartTimer = false
             currentTime = focusTime
+            
             guard timer == nil else { return }
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         }
