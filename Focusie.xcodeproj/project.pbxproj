@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7B2937D0A200D0326F /* AppRouter.swift */; };
+		2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7D2937D31D00D0326F /* FCStateView.swift */; };
+		2C805A802937D36400D0326F /* FCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7F2937D36400D0326F /* FCTitleLabel.swift */; };
+		2C805A832937D3B300D0326F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A822937D3B300D0326F /* UIView+Ext.swift */; };
+		2C805A852937DB0000D0326F /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A842937DB0000D0326F /* UIViewController+Ext.swift */; };
 		2CB2B9DC29367E4C00C71FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2B9DB29367E4C00C71FD3 /* AppDelegate.swift */; };
 		2CB2B9DE29367E4C00C71FD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2B9DD29367E4C00C71FD3 /* SceneDelegate.swift */; };
 		2CB2B9E529367E4E00C71FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CB2B9E429367E4E00C71FD3 /* Assets.xcassets */; };
@@ -31,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C805A7B2937D0A200D0326F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		2C805A7D2937D31D00D0326F /* FCStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStateView.swift; sourceTree = "<group>"; };
+		2C805A7F2937D36400D0326F /* FCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTitleLabel.swift; sourceTree = "<group>"; };
+		2C805A822937D3B300D0326F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		2C805A842937DB0000D0326F /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		2CB2B9D829367E4C00C71FD3 /* Focusie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focusie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CB2B9DB29367E4C00C71FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CB2B9DD29367E4C00C71FD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +75,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C805A7A2937D09C00D0326F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2C805A7B2937D0A200D0326F /* AppRouter.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2C805A812937D3A300D0326F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C805A822937D3B300D0326F /* UIView+Ext.swift */,
+				2C805A842937DB0000D0326F /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2CB2B9CF29367E4C00C71FD3 = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +113,9 @@
 		2CB2B9DA29367E4C00C71FD3 /* Focusie */ = {
 			isa = PBXGroup;
 			children = (
+				2C805A7A2937D09C00D0326F /* App */,
 				2CB2BA0F2936901C00C71FD3 /* Helpers */,
+				2C805A812937D3A300D0326F /* Extensions */,
 				2CB2BA0C29368FCA00C71FD3 /* Model */,
 				2CB2BA0E2936901200C71FD3 /* Custom Views */,
 				2CB2BA0D29368FDB00C71FD3 /* Screens */,
@@ -136,6 +165,8 @@
 			children = (
 				2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */,
 				2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */,
+				2C805A7D2937D31D00D0326F /* FCStateView.swift */,
+				2C805A7F2937D36400D0326F /* FCTitleLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -266,10 +297,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CB2BA17293690CA00C71FD3 /* HomeContracts.swift in Sources */,
+				2C805A852937DB0000D0326F /* UIViewController+Ext.swift in Sources */,
+				2C805A802937D36400D0326F /* FCTitleLabel.swift in Sources */,
+				2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */,
 				2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */,
 				2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */,
 				2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */,
 				2CB2BA132936908800C71FD3 /* HomeVC.swift in Sources */,
+				2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */,
+				2C805A832937D3B300D0326F /* UIView+Ext.swift in Sources */,
 				2CB2B9DC29367E4C00C71FD3 /* AppDelegate.swift in Sources */,
 				2CB2B9DE29367E4C00C71FD3 /* SceneDelegate.swift in Sources */,
 				2CB2BA152936908F00C71FD3 /* HomeViewModel.swift in Sources */,

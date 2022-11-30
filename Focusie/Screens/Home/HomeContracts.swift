@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomeViewModelProtocol {
     var delegate: HomeViewModelDelegate? { get set }
+    func setInitalInfos()
     func startTimer()
     func continueTimer()
     func pauseTimer()
@@ -20,9 +21,11 @@ enum HomeViewModelRoute {
 }
 
 enum HomeViewModelOutput {
+    case setInitialInfos(infos: (minutes: String, seconds: String, stateName:String, stateImageName: String))
     case stopTimer
     case endTimer
     case updateTimer(time: (minutes: String, seconds: String))
+    case updateState(state: (title: String, imageName: String))
 }
 
 protocol HomeViewModelDelegate: AnyObject {

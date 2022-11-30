@@ -7,14 +7,14 @@
 
 import Foundation
 
+enum States: String {
+    case focus = "Focus"
+    case shortBreak = "Break"
+    case longBreak = "Long Break"
+}
+
 final class HomeViewModel: HomeViewModelProtocol {
     weak var delegate: HomeViewModelDelegate?
-    
-    enum States {
-        case focus
-        case shortBreak
-        case longBreak
-    }
     
     private var focusTime: Double = 25
     private var shortBreakTime: Double = 5
@@ -26,6 +26,11 @@ final class HomeViewModel: HomeViewModelProtocol {
     private var canStartTimer = true
     
     private var timer: Timer?
+    
+    func setInitalInfos() {
+        let time: (String, String) = convertToStr(time: focusTime)
+        notify(.setInitialInfos(infos: (minutes: time.0, seconds: time.1, stateName: currentState.rawValue ,stateImageName: "Focus")))
+    }
     
     func startTimer() {
         if canStartTimer {
@@ -91,10 +96,13 @@ final class HomeViewModel: HomeViewModelProtocol {
         switch currentState {
         case .focus:
             currentTime = focusTime
+            notify(.updateState(state: (title: currentState.rawValue ,imageName: "Focus")))
         case .shortBreak:
             currentTime = shortBreakTime
+            notify(.updateState(state: (title: currentState.rawValue, imageName: "Break")))
         case .longBreak:
             currentTime = longBreakTime
+            notify(.updateState(state: (title: currentState.rawValue, imageName: "Break")))
         }
     }
     
