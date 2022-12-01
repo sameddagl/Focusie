@@ -14,6 +14,7 @@ protocol HomeViewModelProtocol {
     func continueTimer()
     func pauseTimer()
     func endTimer()
+    func settingsTapped()
 }
 
 enum HomeViewModelRoute {

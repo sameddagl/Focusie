@@ -6,23 +6,28 @@
 //
 
 import UIKit
+import AVFoundation
 
 final class HomeVC: UIViewController {
     private let stateView = FCStateView()
     private let minutesLabel = FCTimeLabel()
     private let secondsLabel = FCTimeLabel()
     private let actionButton = FCActionButton()
+    private let settingsButton = UIButton()
     
     var viewModel: HomeViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.setInitalInfos()
         configureView()
         layout()
+        
+        viewModel.setInitalInfos()
     }
     
     @objc private func actionButtonTapped() {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
         actionButton.isSelected.toggle()
         
         if actionButton.isSelected {
@@ -31,6 +36,10 @@ final class HomeVC: UIViewController {
         else {
             viewModel.pauseTimer()
         }
+    }
+    
+    @objc private func settingsButtonTapped() {
+        viewModel.settingsTapped()
     }
 }
 
@@ -49,12 +58,18 @@ extension HomeVC: HomeViewModelDelegate {
             self.minutesLabel.text = time.minutes
             self.secondsLabel.text = time.seconds
         case .updateState(let state):
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
             self.stateView.set(with: state)
         }
     }
     
     func navigate(to route: HomeViewModelRoute) {
-        
+        switch route {
+        case .settings:
+            let vc = SettingsVCBuilder().make()
+            present(vc, animated: true)
+        }
     }
 }
 
@@ -67,6 +82,7 @@ extension HomeVC {
     private func layout() {
         configureStateView()
         configureActionButton()
+        configureSettingsButton()
         
         let timeStack = UIStackView(arrangedSubviews: [minutesLabel, secondsLabel])
         timeStack.spacing = -25
@@ -79,14 +95,13 @@ extension HomeVC {
         stack.alignment = .center
         stack.axis = .vertical
         stack.spacing = 20
-        
+                
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            stack.widthAnchor.constraint(equalToConstant: 200),
             stack.heightAnchor.constraint(equalToConstant: 400)
         ])
     }
@@ -107,6 +122,23 @@ extension HomeVC {
         NSLayoutConstraint.activate([
             actionButton.widthAnchor.constraint(equalToConstant: 60),
             actionButton.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    private func configureSettingsButton() {
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(settingsButton)
+        
+        settingsButton.setBackgroundImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
+        settingsButton.tintColor = .label
+        
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            settingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            settingsButton.widthAnchor.constraint(equalToConstant: 25),
+            settingsButton.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
 }

@@ -16,7 +16,7 @@ enum States: String {
 final class HomeViewModel: HomeViewModelProtocol {
     weak var delegate: HomeViewModelDelegate?
     
-    private var focusTime: Double = 25
+    private var focusTime: Double = 10
     private var shortBreakTime: Double = 5
     private var longBreakTime: Double = 15
     
@@ -26,6 +26,8 @@ final class HomeViewModel: HomeViewModelProtocol {
     private var canStartTimer = true
     
     private var timer: Timer?
+    private let auidoPlayer = AudioManager()
+    private let selectedBGSound: BGSound = .none
     
     func setInitalInfos() {
         let time: (String, String) = convertToStr(time: focusTime)
@@ -33,6 +35,8 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func startTimer() {
+        auidoPlayer.playBackgroundSound(with: selectedBGSound)
+        
         if canStartTimer {
             canStartTimer = false
             currentTime = focusTime
@@ -51,6 +55,8 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func pauseTimer() {
+        auidoPlayer.pausePlayingBackgroundSound()
+
         timer?.invalidate()
         timer = nil
     }
@@ -72,6 +78,10 @@ final class HomeViewModel: HomeViewModelProtocol {
         
         let timeStr = self.convertToStr(time: self.currentTime)
         self.notify(.updateTimer(time: timeStr))
+    }
+    
+    func settingsTapped() {
+        delegate?.navigate(to: .settings)
     }
     
     private func checkNewState() {
@@ -101,6 +111,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         case .longBreak:
             currentTime = longBreakTime
         }
+        auidoPlayer.playOneTimeSound()
         notify(.updateState(state: currentState))
     }
     
