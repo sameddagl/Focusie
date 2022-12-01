@@ -21,9 +21,17 @@ final class FCStateView: UIView {
         stateLabel.text = text
     }
     
-    func set(stateName: String, image: UIImage?) {
-        stateLabel.text = stateName
-        stateImage.image = image?.withRenderingMode(.alwaysTemplate)
+    func set(with state: States) {
+        stateLabel.text = state.rawValue
+
+        switch state {
+        case .focus:
+            stateImage.image = UIImage(named: "Focus")?.withRenderingMode(.alwaysTemplate)
+        case .shortBreak:
+            stateImage.image =  UIImage(named: "Break")?.withRenderingMode(.alwaysTemplate)
+        case .longBreak:
+            stateImage.image =  UIImage(named: "Break")?.withRenderingMode(.alwaysTemplate)
+        }
     }
     
     private func configure() {
@@ -50,11 +58,9 @@ final class FCStateView: UIView {
         ])
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 

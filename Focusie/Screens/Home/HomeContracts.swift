@@ -21,11 +21,11 @@ enum HomeViewModelRoute {
 }
 
 enum HomeViewModelOutput {
-    case setInitialInfos(infos: (minutes: String, seconds: String, stateName:String, stateImageName: String))
+    case setInitialInfos(infos: (minutes: String, seconds: String, currentState: States))
     case stopTimer
     case endTimer
     case updateTimer(time: (minutes: String, seconds: String))
-    case updateState(state: (title: String, imageName: String))
+    case updateState(state: States)
 }
 
 protocol HomeViewModelDelegate: AnyObject {

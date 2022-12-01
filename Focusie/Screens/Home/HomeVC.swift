@@ -23,7 +23,6 @@ final class HomeVC: UIViewController {
     }
     
     @objc private func actionButtonTapped() {
-        print("tapped")
         actionButton.isSelected.toggle()
         
         if actionButton.isSelected {
@@ -33,7 +32,6 @@ final class HomeVC: UIViewController {
             viewModel.pauseTimer()
         }
     }
-
 }
 
 extension HomeVC: HomeViewModelDelegate {
@@ -42,7 +40,7 @@ extension HomeVC: HomeViewModelDelegate {
         case.setInitialInfos(let infos):
             self.minutesLabel.text = infos.minutes
             self.secondsLabel.text = infos.seconds
-            self.stateView.set(stateName: infos.stateName, image: UIImage(named: infos.stateImageName))
+            self.stateView.set(with: infos.currentState)
         case .stopTimer:
             break
         case .endTimer:
@@ -51,7 +49,7 @@ extension HomeVC: HomeViewModelDelegate {
             self.minutesLabel.text = time.minutes
             self.secondsLabel.text = time.seconds
         case .updateState(let state):
-            self.stateView.set(stateName: state.title, image: UIImage(named: state.imageName))
+            self.stateView.set(with: state)
         }
     }
     
@@ -67,67 +65,48 @@ extension HomeVC {
     }
     
     private func layout() {
-        
         configureStateView()
-        configureMinutesLabel()
-        configureSecondsLabel()
         configureActionButton()
+        
+        let timeStack = UIStackView(arrangedSubviews: [minutesLabel, secondsLabel])
+        timeStack.spacing = -25
+        timeStack.distribution = .fill
+        timeStack.axis = .vertical
+        timeStack.alignment = .center
+        
+        let stack = UIStackView(arrangedSubviews: [stateView, timeStack, actionButton])
+        stack.distribution = .fill
+        stack.alignment = .center
+        stack.axis = .vertical
+        stack.spacing = 20
+        
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
+        
+        NSLayoutConstraint.activate([
+            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            stack.widthAnchor.constraint(equalToConstant: 200),
+            stack.heightAnchor.constraint(equalToConstant: 400)
+        ])
     }
         
     private func configureStateView() {
-        view.addSubview(stateView)
-        
         stateView.backgroundColor = .systemGreen
-        view.bringSubviewToFront(stateView)
         
         NSLayoutConstraint.activate([
-            stateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            stateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stateView.heightAnchor.constraint(equalToConstant: 40),
             stateView.widthAnchor.constraint(equalToConstant: 130),
         ])
     }
-    
-    private func configureMinutesLabel() {
-        view.addSubview(minutesLabel)
-        
-        NSLayoutConstraint.activate([
-            minutesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            minutesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
-        ])
-    }
-    
-    private func configureSecondsLabel() {
-        view.addSubview(secondsLabel)
-        
-        NSLayoutConstraint.activate([
-            secondsLabel.topAnchor.constraint(equalTo: minutesLabel.bottomAnchor, constant: -20),
-            secondsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
-    }
+
     
     private func configureActionButton() {
-        view.addSubview(actionButton)
-        
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            actionButton.topAnchor.constraint(equalTo: secondsLabel.bottomAnchor, constant: 60),
-            actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             actionButton.widthAnchor.constraint(equalToConstant: 60),
             actionButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 }
-
-#if DEBUG
-import SwiftUI
-
-@available(iOS 13, *)
-struct ViewController_Preview: PreviewProvider {
-    static var previews: some View {
-        // view controller using programmatic UI
-        HomeVC().showPreview()
-    }
-}
-#endif

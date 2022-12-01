@@ -29,7 +29,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     func setInitalInfos() {
         let time: (String, String) = convertToStr(time: focusTime)
-        notify(.setInitialInfos(infos: (minutes: time.0, seconds: time.1, stateName: currentState.rawValue ,stateImageName: "Focus")))
+        notify(.setInitialInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
     }
     
     func startTimer() {
@@ -88,22 +88,20 @@ final class HomeViewModel: HomeViewModelProtocol {
             else if counter % 2 != 0 {
                 currentState = .shortBreak
             }
-            setTimeForNewState()
+            updateState()
         }
     }
     
-    private func setTimeForNewState() {
+    private func updateState() {
         switch currentState {
         case .focus:
             currentTime = focusTime
-            notify(.updateState(state: (title: currentState.rawValue ,imageName: "Focus")))
         case .shortBreak:
             currentTime = shortBreakTime
-            notify(.updateState(state: (title: currentState.rawValue, imageName: "Break")))
         case .longBreak:
             currentTime = longBreakTime
-            notify(.updateState(state: (title: currentState.rawValue, imageName: "Break")))
         }
+        notify(.updateState(state: currentState))
     }
     
     private func convertToStr(time: Double) -> (String, String) {
@@ -122,7 +120,4 @@ final class HomeViewModel: HomeViewModelProtocol {
     private func notify(_ output: HomeViewModelOutput) {
         delegate?.handleWithOutput(output)
     }
-    
-    
-    
 }
