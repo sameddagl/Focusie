@@ -13,6 +13,7 @@ final class HomeVC: UIViewController {
     private let minutesLabel = FCTimeLabel()
     private let secondsLabel = FCTimeLabel()
     private let actionButton = FCActionButton()
+    private let stopButton = FCStopButton()
     private let settingsButton = UIButton()
     
     var viewModel: HomeViewModelProtocol!
@@ -21,7 +22,6 @@ final class HomeVC: UIViewController {
         super.viewDidLoad()
         configureView()
         layout()
-        
         viewModel.setInitalInfos()
     }
     
@@ -29,6 +29,7 @@ final class HomeVC: UIViewController {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
         actionButton.isSelected.toggle()
+        stopButton.isHidden = false
         
         if actionButton.isSelected {
             viewModel.startTimer()
@@ -38,20 +39,25 @@ final class HomeVC: UIViewController {
         }
     }
     
+    @objc private func stopButtonTapped() {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
+    }
+    
     @objc private func settingsButtonTapped() {
         viewModel.settingsTapped()
     }
 }
 
+//Home View Model Delegate
 extension HomeVC: HomeViewModelDelegate {
     func handleWithOutput(_ output: HomeViewModelOutput) {
         switch output {
         case.setInitialInfos(let infos):
+            print(infos.seconds)
             self.minutesLabel.text = infos.minutes
             self.secondsLabel.text = infos.seconds
             self.stateView.set(with: infos.currentState)
-        case .stopTimer:
-            break
         case .endTimer:
             break
         case .updateTimer(let time):
@@ -67,9 +73,16 @@ extension HomeVC: HomeViewModelDelegate {
     func navigate(to route: HomeViewModelRoute) {
         switch route {
         case .settings:
-            let vc = SettingsVCBuilder().make()
+            let vc = SettingsVCBuilder.make(rootView: self)
+            
             present(vc, animated: true)
         }
+    }
+}
+
+extension HomeVC: SettingsUpdateDelegate {
+    func didUpdateWithTimes(focusTime: Double, breakTime: Double) {
+        viewModel.setNewTimes(focusTime: focusTime, breakTime: breakTime)
     }
 }
 
@@ -81,7 +94,7 @@ extension HomeVC {
     
     private func layout() {
         configureStateView()
-        configureActionButton()
+        configureButtons()
         configureSettingsButton()
         
         let timeStack = UIStackView(arrangedSubviews: [minutesLabel, secondsLabel])
@@ -90,19 +103,22 @@ extension HomeVC {
         timeStack.axis = .vertical
         timeStack.alignment = .center
         
-        let stack = UIStackView(arrangedSubviews: [stateView, timeStack, actionButton])
+        let buttonsStack = UIStackView(arrangedSubviews: [actionButton , stopButton])
+        buttonsStack.spacing = 20
+        buttonsStack.distribution = .fillEqually
+        
+        let stack = UIStackView(arrangedSubviews: [stateView, timeStack, buttonsStack])
         stack.distribution = .fill
         stack.alignment = .center
         stack.axis = .vertical
-        stack.spacing = 20
-                
+        
         stack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stack)
         
         NSLayoutConstraint.activate([
             stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stack.heightAnchor.constraint(equalToConstant: 400)
+            stack.heightAnchor.constraint(equalToConstant: 400),
         ])
     }
         
@@ -116,15 +132,20 @@ extension HomeVC {
     }
 
     
-    private func configureActionButton() {
+    private func configureButtons() {
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+        
+        stopButton.isHidden = true
+        stopButton.addTarget(self, action: #selector(stopButtonTapped), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             actionButton.widthAnchor.constraint(equalToConstant: 60),
-            actionButton.heightAnchor.constraint(equalToConstant: 60)
+            actionButton.heightAnchor.constraint(equalToConstant: 60),
+            stopButton.widthAnchor.constraint(equalToConstant: 60),
+            stopButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
-    
+        
     private func configureSettingsButton() {
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(settingsButton)

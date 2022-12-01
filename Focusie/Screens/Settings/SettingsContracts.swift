@@ -9,19 +9,26 @@ import Foundation
 
 protocol SettingsViewModelProtocol {
     var delegate: SettingsViewModelDelegate? { get set }
+    var updateDelegate: SettingsUpdateDelegate? { get set }
     func load()
-    func focusTimeChanged()
-    func breakTimeChanged()
+    func focusTimeChanged(sliderValue: Float)
+    func breakTimeChanged(sliderValue: Float)
     func bgSoundChanged()
+    func updateTimes()
 }
 
 enum SettingsOutput {
-    case updateInitialInfos(times: (focusTime: Int, breakTime: Int))
-    case focusTimeChanged
-    case breakTimeChanged
+    case updateInitialInfos(times: (focusTime: Float, breakTime: Float))
+    case focusTimeChanged(changedValue: Float)
+    case breakTimeChanged(changedValue: Float)
     case bgSoundChanged
 }
 
-protocol SettingsViewModelDelegate {
+protocol SettingsViewModelDelegate: AnyObject {
     func handleWithOutput(_ output: SettingsOutput)
+}
+
+
+protocol SettingsUpdateDelegate: AnyObject {
+    func didUpdateWithTimes(focusTime: Double, breakTime: Double)
 }

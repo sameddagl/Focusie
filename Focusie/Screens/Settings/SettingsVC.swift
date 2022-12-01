@@ -22,25 +22,21 @@ final class SettingsVC: UIViewController {
         layoutFocusTimeSettings()
         layoutBreakTimeSettings()
         
+        viewModel.load()
     }
     
-    @objc private func sliderChanged(_ sender: UISlider) {
-        if sender == focusTimeSlider {
-            let step: Float = 5
-            let roundedValue = round(sender.value / step) * step
-            
-            focusTimeSliderLabel.text = String(format: "%.0f", roundedValue)
-            sender.value = roundedValue
-        }
-        else {
-            let step: Float = 1
-            let roundedValue = round(sender.value / step) * step
-            
-            breakTimeSliderLabel.text = String(format: "%.0f", roundedValue)
-            sender.value = roundedValue
-        }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel.updateTimes()
     }
+    
+    @objc private func focusTimeChanged() {
+        viewModel.focusTimeChanged(sliderValue: focusTimeSlider.value)
+        
+    }
+    
+    @objc private func breakTimeChanged() {
+        viewModel.breakTimeChanged(sliderValue: breakTimeSlider.value)
+    }    
     
     @objc private func doneTapped() {
         dismiss(animated: true)
@@ -51,15 +47,20 @@ extension SettingsVC: SettingsViewModelDelegate {
     func handleWithOutput(_ output: SettingsOutput) {
         switch output {
         case .updateInitialInfos(let times):
-            break
-        case .focusTimeChanged:
-            break
-        case .breakTimeChanged:
-            break
+            focusTimeSliderLabel.text = String(format: "%.0f", times.focusTime)
+            breakTimeSliderLabel.text = String(format: "%.0f", times.breakTime)
+            
+            focusTimeSlider.setValue(times.focusTime, animated: false)
+            breakTimeSlider.setValue(times.breakTime, animated: false)
+        case .focusTimeChanged(let value):
+            focusTimeSliderLabel.text = String(format: "%.0f", value)
+            focusTimeSlider.setValue(value, animated: false)
+        case .breakTimeChanged(let value):
+            breakTimeSliderLabel.text = String(format: "%.0f", value)
+            breakTimeSlider.setValue(value, animated: false)
         case .bgSoundChanged:
             break
         }
-        
     }
 }
 
@@ -75,9 +76,8 @@ extension SettingsVC {
         focusTimeSlider.minimumValue = 5
         focusTimeSlider.maximumValue = 35
         focusTimeSlider.tintColor = .systemPink
-        focusTimeSlider.setValue(25, animated: false)
-
-        focusTimeSlider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
+        
+        focusTimeSlider.addTarget(self, action: #selector(focusTimeChanged), for: .valueChanged)
         
         let focusTimeSliderView = FCSliderView(title: "Settings", valueLabel: focusTimeSliderLabel, slider: focusTimeSlider)
         view.addSubview(focusTimeSliderView)
@@ -93,9 +93,8 @@ extension SettingsVC {
         breakTimeSlider.minimumValue = 2
         breakTimeSlider.maximumValue = 7
         breakTimeSlider.tintColor = .systemPink
-        breakTimeSlider.setValue(5, animated: false)
-
-        breakTimeSlider.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
+        
+        breakTimeSlider.addTarget(self, action: #selector(breakTimeChanged), for: .valueChanged)
         
         let breakTimeSliderView = FCSliderView(title: "Short Break Time", valueLabel: breakTimeSliderLabel, slider: breakTimeSlider)
         view.addSubview(breakTimeSliderView)
