@@ -23,7 +23,6 @@ enum HomeViewModelRoute {
 
 enum HomeViewModelOutput {
     case updateInfos(infos: (minutes: String, seconds: String, currentState: States))
-    case endTimer
     case updateTimer(time: (minutes: String, seconds: String))
     case updateState(state: States)
 }

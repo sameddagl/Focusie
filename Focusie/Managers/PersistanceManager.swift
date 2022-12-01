@@ -13,7 +13,12 @@ enum Keys: String {
 
 }
 
-final class PersistanceManager {
+protocol PersistanceManagerProtocol {
+    func retrieveData(forKey: Keys) -> Double?
+    func save(focusTime: Double, shortBreakTime: Double)
+}
+
+final class PersistanceManager: PersistanceManagerProtocol {
     private let defaults = UserDefaults.standard
     
     func retrieveData(forKey: Keys) -> Double? {

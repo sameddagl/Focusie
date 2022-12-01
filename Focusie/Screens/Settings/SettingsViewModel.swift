@@ -11,16 +11,17 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     weak var delegate: SettingsViewModelDelegate?
     weak var updateDelegate: SettingsUpdateDelegate?
     
-    let persistanceManager = PersistanceManager()
+    private var persistanceManager: PersistanceManagerProtocol!
+    
+    init(persistanceManager: PersistanceManagerProtocol ,canChangeValues: Bool) {
+        self.persistanceManager = persistanceManager
+        self.canChangeValues = canChangeValues
+    }
     
     private var focusTime: Double = 25
     private var breakTime: Double = 5
     
     private let canChangeValues: Bool!
-    
-    init(canChangeValues: Bool) {
-        self.canChangeValues = canChangeValues
-    }
     
     func load() {
         getSavedValues()

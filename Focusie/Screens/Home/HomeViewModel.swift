@@ -15,20 +15,26 @@ enum States: String {
 
 final class HomeViewModel: HomeViewModelProtocol {
     weak var delegate: HomeViewModelDelegate?
-    let persistanceManager = PersistanceManager()
+    
+    private var persistanceManager: PersistanceManagerProtocol!
+    private var audioPlayer: AudioManagerProtocol!
+    
+    init(persistanceManager: PersistanceManager, audioPlayer: AudioManagerProtocol?) {
+        self.persistanceManager = persistanceManager
+        self.audioPlayer = audioPlayer
+    }
     
     private var focusTime: Double = 25
     private var shortBreakTime: Double = 5
     private var longBreakTime: Double = 15
-    
+    private let selectedBGSound: BGSound = .pianoBackground
+
     private var currentTime: TimeInterval!
     private var currentState: States = .focus
     private var counter = 0
     private var canStartTimer = true
     
     private var timer: Timer?
-    private let audioPlayer = AudioManager()
-    private let selectedBGSound: BGSound = .pianoBackground
     
     func updateInfos() {
         setSavedValues()
@@ -44,7 +50,6 @@ final class HomeViewModel: HomeViewModelProtocol {
             canStartTimer = false
             currentTime = focusTime
             
-            guard timer == nil else { return }
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         }
         else {
@@ -53,19 +58,17 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     private func continueTimer() {
-        guard timer == nil else { return }
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
     
     func pauseTimer() {
-        audioPlayer.pausePlayingBackgroundSound()
-
         timer?.invalidate()
         timer = nil
+        
+        audioPlayer.pausePlayingBackgroundSound()
     }
     
     func endTimer() {
-        guard timer != nil else { return }
         timer?.invalidate()
         timer = nil
         canStartTimer = true
@@ -84,7 +87,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func settingsTapped() {
-        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(canChangeValues: canStartTimer)))
+        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
     }
     
     func setNewTimes(focusTime: Double, breakTime: Double) {

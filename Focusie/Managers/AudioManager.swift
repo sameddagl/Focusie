@@ -8,7 +8,15 @@
 import Foundation
 import AVFoundation
 
-final class AudioManager: NSObject {
+protocol AudioManagerProtocol {
+    func playOneTimeSound()
+    func stopPlayingOneTimeSound()
+    func playBackgroundSound(with sound: BGSound)
+    func pausePlayingBackgroundSound()
+    func endPlayingBackgroundSound()
+    
+}
+final class AudioManager: NSObject, AudioManagerProtocol {
     
     var player: AVAudioPlayer?
     var bgPlayer: AVAudioPlayer?

@@ -10,6 +10,7 @@
 		2C4C5B9F2938F0E800E031D6 /* FCBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C5B9E2938F0E800E031D6 /* FCBodyLabel.swift */; };
 		2C4C5BA12938F7FE00E031D6 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */; };
 		2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63D2722938E0BB00B3B615 /* FCStopButton.swift */; };
+		2C7D586C29390DA100AE5668 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D586B29390DA100AE5668 /* AppContainer.swift */; };
 		2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7B2937D0A200D0326F /* AppRouter.swift */; };
 		2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7D2937D31D00D0326F /* FCStateView.swift */; };
 		2C805A802937D36400D0326F /* FCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7F2937D36400D0326F /* FCTitleLabel.swift */; };
@@ -54,6 +55,7 @@
 		2C4C5B9E2938F0E800E031D6 /* FCBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCBodyLabel.swift; sourceTree = "<group>"; };
 		2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		2C63D2722938E0BB00B3B615 /* FCStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStopButton.swift; sourceTree = "<group>"; };
+		2C7D586B29390DA100AE5668 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		2C805A7B2937D0A200D0326F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		2C805A7D2937D31D00D0326F /* FCStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStateView.swift; sourceTree = "<group>"; };
 		2C805A7F2937D36400D0326F /* FCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTitleLabel.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				2C805A7B2937D0A200D0326F /* AppRouter.swift */,
+				2C7D586B29390DA100AE5668 /* AppContainer.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -228,8 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				2CEE73BE2938A6DD00EDB109 /* SettingsVCBuilder.swift */,
-				2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */,
 				2CEE73C22938A74800EDB109 /* SettingsContracts.swift */,
+				2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */,
 				2CEE73C42938A81E00EDB109 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
@@ -387,6 +390,7 @@
 				2CB2BA132936908800C71FD3 /* HomeVC.swift in Sources */,
 				2C4C5B9F2938F0E800E031D6 /* FCBodyLabel.swift in Sources */,
 				2CEE73C72938B2D700EDB109 /* FCSliderView.swift in Sources */,
+				2C7D586C29390DA100AE5668 /* AppContainer.swift in Sources */,
 				2CEE73AF2938953900EDB109 /* AudioManager.swift in Sources */,
 				2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */,
 				2C805A832937D3B300D0326F /* UIView+Ext.swift in Sources */,

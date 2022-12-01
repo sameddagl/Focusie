@@ -70,8 +70,6 @@ extension HomeVC: HomeViewModelDelegate {
             self.minutesLabel.text = infos.minutes
             self.secondsLabel.text = infos.seconds
             self.stateView.set(with: infos.currentState)
-        case .endTimer:
-            break
         case .updateTimer(let time):
             self.minutesLabel.text = time.minutes
             self.secondsLabel.text = time.seconds
