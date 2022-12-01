@@ -28,7 +28,6 @@ protocol SettingsViewModelDelegate: AnyObject {
     func handleWithOutput(_ output: SettingsOutput)
 }
 
-
 protocol SettingsUpdateDelegate: AnyObject {
     func didUpdateWithTimes(focusTime: Double, breakTime: Double)
 }

@@ -14,10 +14,9 @@ protocol AudioManagerProtocol {
     func playBackgroundSound(with sound: BGSound)
     func pausePlayingBackgroundSound()
     func endPlayingBackgroundSound()
-    
 }
+
 final class AudioManager: NSObject, AudioManagerProtocol {
-    
     var player: AVAudioPlayer?
     var bgPlayer: AVAudioPlayer?
     
@@ -26,8 +25,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
     func playOneTimeSound() {
         player = nil
         
-        guard let path = Bundle.main.path(forResource: "break2", ofType:"mp3") else {
-            return }
+        guard let path = Bundle.main.path(forResource: "break2", ofType:"mp3") else { return }
         let url = URL(fileURLWithPath: path)
 
         do {
@@ -42,10 +40,10 @@ final class AudioManager: NSObject, AudioManagerProtocol {
             if let bgPlayer = bgPlayer, bgPlayer.isPlaying {
                 bgPlayer.setVolume(0.1, fadeDuration: 1)
             }
-            player.play()
-
             
-        } catch let error {
+            player.play()
+        }
+        catch let error {
             print(error.localizedDescription)
         }
     }
@@ -60,8 +58,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         
         if sound.rawValue.isEmpty { return }
         
-        guard let path = Bundle.main.path(forResource: sound.rawValue, ofType:"mp3") else {
-            return }
+        guard let path = Bundle.main.path(forResource: sound.rawValue, ofType:"mp3") else { return }
         let url = URL(fileURLWithPath: path)
 
         do {
@@ -81,8 +78,8 @@ final class AudioManager: NSObject, AudioManagerProtocol {
             else {
                 bgPlayer.play()
             }
-            
-        } catch let error {
+        }
+        catch let error {
             print(error.localizedDescription)
         }
     }
@@ -101,7 +98,6 @@ final class AudioManager: NSObject, AudioManagerProtocol {
 }
 
 extension AudioManager: AVAudioPlayerDelegate {
-    
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if let bgPlayer = bgPlayer {
             bgPlayer.setVolume(0.7, fadeDuration: 1)

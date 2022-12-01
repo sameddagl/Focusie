@@ -26,11 +26,11 @@ final class FCStateView: UIView {
 
         switch state {
         case .focus:
-            stateImage.image = UIImage(named: "Focus")?.withRenderingMode(.alwaysTemplate)
+            stateImage.image = Images.focusState?.withRenderingMode(.alwaysTemplate)
         case .shortBreak:
-            stateImage.image =  UIImage(named: "Break")?.withRenderingMode(.alwaysTemplate)
+            stateImage.image = Images.breakState?.withRenderingMode(.alwaysTemplate)
         case .longBreak:
-            stateImage.image =  UIImage(named: "Break")?.withRenderingMode(.alwaysTemplate)
+            stateImage.image = Images.breakState?.withRenderingMode(.alwaysTemplate)
         }
     }
     

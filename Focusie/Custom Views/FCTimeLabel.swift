@@ -25,13 +25,10 @@ final class FCTimeLabel: UILabel {
         textColor = .label
         font = .systemFont(ofSize: 130, weight: .heavy)
         numberOfLines = 2
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+    } 
 }
 

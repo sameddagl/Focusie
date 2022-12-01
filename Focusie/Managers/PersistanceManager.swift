@@ -10,7 +10,6 @@ import Foundation
 enum Keys: String {
     case focusTime = "focusTime"
     case shortBreakTime = "shortBreakTime"
-
 }
 
 protocol PersistanceManagerProtocol {

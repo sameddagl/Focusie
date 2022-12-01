@@ -39,22 +39,22 @@ final class HomeViewModel: HomeViewModelProtocol {
     func updateInfos() {
         setSavedValues()
         
-        let time: (String, String) = convertToStr(time: focusTime)
+        let time: (String, String) = convertToStr(time: focusTime * 60)
         notify(.updateInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
     }
     
     func startTimer() {
-        audioPlayer.playBackgroundSound(with: selectedBGSound)
-        
         if canStartTimer {
             canStartTimer = false
-            currentTime = focusTime
+            currentTime = focusTime * 60
             
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         }
         else {
             continueTimer()
         }
+        
+        audioPlayer.playBackgroundSound(with: selectedBGSound)
     }
     
     private func continueTimer() {
@@ -125,26 +125,20 @@ final class HomeViewModel: HomeViewModelProtocol {
     private func updateState() {
         switch currentState {
         case .focus:
-            currentTime = focusTime
+            currentTime = focusTime * 60
         case .shortBreak:
-            currentTime = shortBreakTime
+            currentTime = shortBreakTime * 60
         case .longBreak:
-            currentTime = longBreakTime
+            currentTime = longBreakTime * 60
         }
         audioPlayer.playOneTimeSound()
         notify(.updateState(state: currentState))
     }
     
     private func convertToStr(time: Double) -> (String, String) {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute]
-        formatter.zeroFormattingBehavior = .pad
-        
-        let minutes = formatter.string(from: time)!
-        
-        formatter.allowedUnits = [.second]
-        let seconds = formatter.string(from: time)!
-        
+        let minutes = String(format: "%02d", Int(time) / 60)
+        let seconds = String(format: "%02d", Int(time) % 60)
+    
         return (minutes, seconds)
     }
     

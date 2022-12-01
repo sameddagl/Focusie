@@ -29,6 +29,7 @@ final class HomeVC: UIViewController {
         viewModel.updateInfos()
     }
     
+    //MARK: - Start and pause timer
     @objc private func actionButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
@@ -43,6 +44,7 @@ final class HomeVC: UIViewController {
         }
     }
     
+    //MARK: - Stop Timer
     @objc private func stopButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
@@ -57,12 +59,13 @@ final class HomeVC: UIViewController {
         present(alert, animated: true)
     }
     
+    //MARK: - Navigate to settings
     @objc private func settingsButtonTapped() {
         viewModel.settingsTapped()
     }
 }
 
-//Home View Model Delegate
+//MARK: - Delegate methods
 extension HomeVC: HomeViewModelDelegate {
     func handleWithOutput(_ output: HomeViewModelOutput) {
         switch output {
@@ -75,16 +78,14 @@ extension HomeVC: HomeViewModelDelegate {
             self.secondsLabel.text = time.seconds
         case .updateState(let state):
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            
             self.stateView.set(with: state)
         }
     }
     
     func navigate(to route: HomeViewModelRoute) {
         switch route {
-        case .settings(var viewModel):
-            viewModel.updateDelegate = self
-            let vc = SettingsVCBuilder.make(rootView: self, viewModel: viewModel)
+        case .settings(let viewModel):
+            let vc = SettingsVCBuilder.make(rootVC: self, viewModel: viewModel)
             present(vc, animated: true)
         }
     }
@@ -96,7 +97,7 @@ extension HomeVC: SettingsUpdateDelegate {
     }
 }
 
-//UI Related
+//MARK: - UI Related
 extension HomeVC {
     private func configureView() {
         view.backgroundColor = .systemBackground

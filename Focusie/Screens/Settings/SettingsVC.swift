@@ -35,7 +35,6 @@ final class SettingsVC: UIViewController {
     
     @objc private func focusTimeChanged() {
         viewModel.focusTimeChanged(sliderValue: focusTimeSlider.value)
-        
     }
     
     @objc private func breakTimeChanged() {

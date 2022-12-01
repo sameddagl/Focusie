@@ -30,7 +30,7 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     }
     
     func focusTimeChanged(sliderValue: Float) {
-        let step: Float = 5
+        let step: Float = 1
         let roundedValue = round(sliderValue / step) * step
         self.focusTime = Double(roundedValue)
         
@@ -43,7 +43,6 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         self.breakTime = Double(roundedValue)
         
         notify(.breakTimeChanged(changedValue: roundedValue))
-
     }
     
     func bgSoundChanged() {
@@ -52,10 +51,13 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     
     func updateTimes() {
         if canChangeValues {
-            persistanceManager.save(focusTime: self.focusTime, shortBreakTime: self.breakTime)
-            
+            saveToDefaults()
             updateDelegate?.didUpdateWithTimes(focusTime: self.focusTime, breakTime: self.breakTime)
         }
+    }
+    
+    func saveToDefaults() {
+        persistanceManager.save(focusTime: self.focusTime, shortBreakTime: self.breakTime)
     }
     
     private func getSavedValues() {
@@ -66,10 +68,7 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         self.breakTime = shortBreakTime
     }
 
-    
     private func notify(_ output: SettingsOutput) {
         delegate?.handleWithOutput(output)
     }
-    
-    
 }
