@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C4C5B9F2938F0E800E031D6 /* FCBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C5B9E2938F0E800E031D6 /* FCBodyLabel.swift */; };
+		2C4C5BA12938F7FE00E031D6 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */; };
 		2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63D2722938E0BB00B3B615 /* FCStopButton.swift */; };
 		2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7B2937D0A200D0326F /* AppRouter.swift */; };
 		2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7D2937D31D00D0326F /* FCStateView.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		2C4C5B9E2938F0E800E031D6 /* FCBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCBodyLabel.swift; sourceTree = "<group>"; };
+		2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		2C63D2722938E0BB00B3B615 /* FCStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStopButton.swift; sourceTree = "<group>"; };
 		2C805A7B2937D0A200D0326F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		2C805A7D2937D31D00D0326F /* FCStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStateView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				2CEE73AE2938953900EDB109 /* AudioManager.swift */,
 				2CEE73BC2938A52800EDB109 /* AudioTypes.swift */,
+				2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */,
 				2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */,
 				2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */,
+				2C4C5BA12938F7FE00E031D6 /* PersistanceManager.swift in Sources */,
 				2CEE73BD2938A52800EDB109 /* AudioTypes.swift in Sources */,
 				2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */,
 				2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */,

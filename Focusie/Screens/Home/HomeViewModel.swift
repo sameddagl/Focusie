@@ -15,6 +15,7 @@ enum States: String {
 
 final class HomeViewModel: HomeViewModelProtocol {
     weak var delegate: HomeViewModelDelegate?
+    let persistanceManager = PersistanceManager()
     
     private var focusTime: Double = 25
     private var shortBreakTime: Double = 5
@@ -26,16 +27,18 @@ final class HomeViewModel: HomeViewModelProtocol {
     private var canStartTimer = true
     
     private var timer: Timer?
-    private let auidoPlayer = AudioManager()
+    private let audioPlayer = AudioManager()
     private let selectedBGSound: BGSound = .pianoBackground
     
     func setInitalInfos() {
+        setSavedValues()
+        
         let time: (String, String) = convertToStr(time: focusTime)
         notify(.setInitialInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
     }
     
     func startTimer() {
-        auidoPlayer.playBackgroundSound(with: selectedBGSound)
+        audioPlayer.playBackgroundSound(with: selectedBGSound)
         
         if canStartTimer {
             canStartTimer = false
@@ -55,7 +58,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func pauseTimer() {
-        auidoPlayer.pausePlayingBackgroundSound()
+        audioPlayer.pausePlayingBackgroundSound()
 
         timer?.invalidate()
         timer = nil
@@ -70,8 +73,10 @@ final class HomeViewModel: HomeViewModelProtocol {
         shortBreakTime = 5
         longBreakTime = 15
         canStartTimer = true
+        
         setInitalInfos()
-        auidoPlayer.endPlayingBackgroundSound()
+        audioPlayer.endPlayingBackgroundSound()
+        audioPlayer.stopPlayingOneTimeSound()
     }
     
     @objc private func fireTimer() {
@@ -90,6 +95,14 @@ final class HomeViewModel: HomeViewModelProtocol {
         self.focusTime = focusTime
         self.shortBreakTime = breakTime
         setInitalInfos()
+    }
+    
+    private func setSavedValues() {
+        guard let focusTime = persistanceManager.retrieveData(forKey: Keys.focusTime) else { return }
+        guard let shortBreakTime = persistanceManager.retrieveData(forKey: Keys.shortBreakTime) else { return }
+        
+        self.focusTime = focusTime
+        self.shortBreakTime = shortBreakTime
     }
 
     private func checkNewState() {
@@ -119,7 +132,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         case .longBreak:
             currentTime = longBreakTime
         }
-        auidoPlayer.playOneTimeSound()
+        audioPlayer.playOneTimeSound()
         notify(.updateState(state: currentState))
     }
     

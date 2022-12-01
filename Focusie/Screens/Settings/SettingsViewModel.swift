@@ -11,6 +11,8 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     weak var delegate: SettingsViewModelDelegate?
     weak var updateDelegate: SettingsUpdateDelegate?
     
+    let persistanceManager = PersistanceManager()
+    
     private var focusTime: Double = 25
     private var breakTime: Double = 5
     
@@ -21,6 +23,8 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     }
     
     func load() {
+        getSavedValues()
+        
         notify(.updateInitialInfos(times: (focusTime: Float(self.focusTime), breakTime: Float(self.breakTime), areSlidersEnabled: canChangeValues)))
     }
     
@@ -47,9 +51,20 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     
     func updateTimes() {
         if canChangeValues {
+            persistanceManager.save(focusTime: self.focusTime, shortBreakTime: self.breakTime)
+            
             updateDelegate?.didUpdateWithTimes(focusTime: self.focusTime, breakTime: self.breakTime)
         }
     }
+    
+    private func getSavedValues() {
+        guard let focusTime = persistanceManager.retrieveData(forKey: Keys.focusTime) else { return }
+        guard let shortBreakTime = persistanceManager.retrieveData(forKey: Keys.shortBreakTime) else { return }
+        
+        self.focusTime = focusTime
+        self.breakTime = shortBreakTime
+    }
+
     
     private func notify(_ output: SettingsOutput) {
         delegate?.handleWithOutput(output)

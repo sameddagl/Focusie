@@ -40,6 +40,10 @@ final class AudioManager: NSObject {
         }
     }
     
+    func stopPlayingOneTimeSound() {
+        player?.stop()
+    }
+    
     func playBackgroundSound(with sound: BGSound) {
         if sound.rawValue.isEmpty { return }
         
@@ -77,7 +81,7 @@ final class AudioManager: NSObject {
     
     func endPlayingBackgroundSound() {
         currentTime = 0
-        bgPlayer?.pause()
+        bgPlayer?.stop()
     }
 }
 
