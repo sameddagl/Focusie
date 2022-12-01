@@ -34,6 +34,7 @@
 		2CEE73C12938A6FB00EDB109 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */; };
 		2CEE73C32938A74800EDB109 /* SettingsContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C22938A74800EDB109 /* SettingsContracts.swift */; };
 		2CEE73C52938A81E00EDB109 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C42938A81E00EDB109 /* SettingsViewModel.swift */; };
+		2CEE73C72938B2D700EDB109 /* FCSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C62938B2D700EDB109 /* FCSliderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		2CEE73C22938A74800EDB109 /* SettingsContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContracts.swift; sourceTree = "<group>"; };
 		2CEE73C42938A81E00EDB109 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		2CEE73C62938B2D700EDB109 /* FCSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCSliderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */,
 				2C805A7D2937D31D00D0326F /* FCStateView.swift */,
 				2C805A7F2937D36400D0326F /* FCTitleLabel.swift */,
+				2CEE73C62938B2D700EDB109 /* FCSliderView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				2CEE73BD2938A52800EDB109 /* AudioTypes.swift in Sources */,
 				2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */,
 				2CB2BA132936908800C71FD3 /* HomeVC.swift in Sources */,
+				2CEE73C72938B2D700EDB109 /* FCSliderView.swift in Sources */,
 				2CEE73AF2938953900EDB109 /* AudioManager.swift in Sources */,
 				2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */,
 				2C805A832937D3B300D0326F /* UIView+Ext.swift in Sources */,

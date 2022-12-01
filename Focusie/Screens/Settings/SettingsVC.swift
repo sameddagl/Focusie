@@ -6,18 +6,31 @@
 //
 
 import UIKit
-import SwiftUI
 
 final class SettingsVC: UIViewController {
     private let focusTimeSlider = UISlider()
+    private let focusTimeValueLabel = FCTitleLabel(text: "25")
+    
     private let breakTimeSlider = UISlider()
     
     var viewModel: SettingsViewModelProtocol!
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         configureView()
-        layout()
+        layoutFocusTimeSettings()
+        
+    }
+    
+    @objc private func focusTimeSliderChange() {
+        let step: Float = 5
+        let roundedValue = round(focusTimeSlider.value / step) * step
+        focusTimeValueLabel.text = String(format: "%.0f", roundedValue)
+        focusTimeSlider.value = roundedValue
+    }
+    
+    @objc private func doneTapped() {
+        dismiss(animated: true)
     }
 }
 
@@ -31,31 +44,26 @@ extension SettingsVC: SettingsViewModelDelegate {
 extension SettingsVC {
     private func configureView() {
         view.backgroundColor = .systemBackground
-    }
-    private func layout() {
-        focusTimeSlider.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(focusTimeSlider)
         
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        navigationItem.rightBarButtonItem = doneButton
+    }
+    private func layoutFocusTimeSettings() {
         focusTimeSlider.minimumValue = 5
         focusTimeSlider.maximumValue = 35
         focusTimeSlider.tintColor = .systemPink
+        focusTimeSlider.setValue(25, animated: false)
+
+        focusTimeSlider.addTarget(self, action: #selector(focusTimeSliderChange), for: .valueChanged)
+        
+        let focusTimeSliderView = FCSliderView(title: "Settings", valueLabel: focusTimeValueLabel, slider: focusTimeSlider)
+        view.addSubview(focusTimeSliderView)
         
         NSLayoutConstraint.activate([
-            focusTimeSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            focusTimeSlider.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            focusTimeSlider.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+            focusTimeSliderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            focusTimeSliderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            focusTimeSliderView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
     }
 }
 
-#if DEBUG
- import SwiftUI
-
- @available(iOS 13, *)
- struct ViewController_Preview: PreviewProvider {
-     static var previews: some View {
-         // view controller using programmatic UI
-         SettingsVC().showPreview()
-     }
- }
- #endif
