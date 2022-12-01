@@ -11,10 +11,7 @@ final class HomeVCBuilder {
     static func make() -> HomeVC {
         let vc = HomeVC()
         let viewModel = HomeViewModel()
-        
         vc.viewModel = viewModel
-        viewModel.delegate = vc
-        
         return vc
     }
 }

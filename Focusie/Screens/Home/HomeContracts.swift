@@ -18,7 +18,7 @@ protocol HomeViewModelProtocol {
 }
 
 enum HomeViewModelRoute {
-    case settings
+    case settings(viewModel: SettingsViewModelProtocol)
 }
 
 enum HomeViewModelOutput {

@@ -18,7 +18,7 @@ protocol SettingsViewModelProtocol {
 }
 
 enum SettingsOutput {
-    case updateInitialInfos(times: (focusTime: Float, breakTime: Float))
+    case updateInitialInfos(times: (focusTime: Float, breakTime: Float, areSlidersEnabled: Bool))
     case focusTimeChanged(changedValue: Float)
     case breakTimeChanged(changedValue: Float)
     case bgSoundChanged

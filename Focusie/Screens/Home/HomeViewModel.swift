@@ -70,6 +70,8 @@ final class HomeViewModel: HomeViewModelProtocol {
         shortBreakTime = 5
         longBreakTime = 15
         canStartTimer = true
+        setInitalInfos()
+        auidoPlayer.endPlayingBackgroundSound()
     }
     
     @objc private func fireTimer() {
@@ -81,7 +83,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func settingsTapped() {
-        delegate?.navigate(to: .settings)
+        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(canChangeValues: canStartTimer)))
     }
     
     func setNewTimes(focusTime: Double, breakTime: Double) {

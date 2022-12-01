@@ -14,7 +14,11 @@ final class SettingsVC: UIViewController {
     private let breakTimeSlider = UISlider()
     private let breakTimeSliderLabel = FCTitleLabel(text: "5")
     
-    var viewModel: SettingsViewModelProtocol!
+    var viewModel: SettingsViewModelProtocol! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +50,15 @@ final class SettingsVC: UIViewController {
 extension SettingsVC: SettingsViewModelDelegate {
     func handleWithOutput(_ output: SettingsOutput) {
         switch output {
-        case .updateInitialInfos(let times):
-            focusTimeSliderLabel.text = String(format: "%.0f", times.focusTime)
-            breakTimeSliderLabel.text = String(format: "%.0f", times.breakTime)
+        case .updateInitialInfos(let infos):
+            focusTimeSliderLabel.text = String(format: "%.0f", infos.focusTime)
+            breakTimeSliderLabel.text = String(format: "%.0f", infos.breakTime)
             
-            focusTimeSlider.setValue(times.focusTime, animated: false)
-            breakTimeSlider.setValue(times.breakTime, animated: false)
+            focusTimeSlider.setValue(infos.focusTime, animated: false)
+            breakTimeSlider.setValue(infos.breakTime, animated: false)
+            
+            focusTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
+            breakTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
         case .focusTimeChanged(let value):
             focusTimeSliderLabel.text = String(format: "%.0f", value)
             focusTimeSlider.setValue(value, animated: false)

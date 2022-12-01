@@ -14,9 +14,14 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     private var focusTime: Double = 25
     private var breakTime: Double = 5
     
+    private let canChangeValues: Bool!
+    
+    init(canChangeValues: Bool) {
+        self.canChangeValues = canChangeValues
+    }
     
     func load() {
-        notify(.updateInitialInfos(times: (focusTime: Float(self.focusTime), breakTime: Float(self.breakTime))))
+        notify(.updateInitialInfos(times: (focusTime: Float(self.focusTime), breakTime: Float(self.breakTime), areSlidersEnabled: canChangeValues)))
     }
     
     func focusTimeChanged(sliderValue: Float) {
@@ -41,7 +46,9 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     }
     
     func updateTimes() {
-        updateDelegate?.didUpdateWithTimes(focusTime: self.focusTime, breakTime: self.breakTime)
+        if canChangeValues {
+            updateDelegate?.didUpdateWithTimes(focusTime: self.focusTime, breakTime: self.breakTime)
+        }
     }
     
     private func notify(_ output: SettingsOutput) {

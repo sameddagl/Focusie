@@ -74,6 +74,11 @@ final class AudioManager: NSObject {
         currentTime = bgPlayer?.currentTime
         bgPlayer?.pause()
     }
+    
+    func endPlayingBackgroundSound() {
+        currentTime = 0
+        bgPlayer?.pause()
+    }
 }
 
 extension AudioManager: AVAudioPlayerDelegate {

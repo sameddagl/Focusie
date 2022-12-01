@@ -16,7 +16,11 @@ final class HomeVC: UIViewController {
     private let stopButton = FCStopButton()
     private let settingsButton = UIButton()
     
-    var viewModel: HomeViewModelProtocol!
+    var viewModel: HomeViewModelProtocol! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,9 @@ final class HomeVC: UIViewController {
     @objc private func stopButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
+        viewModel.endTimer()
+        actionButton.isSelected = false
+        stopButton.isHidden = true
     }
     
     @objc private func settingsButtonTapped() {
@@ -54,7 +61,6 @@ extension HomeVC: HomeViewModelDelegate {
     func handleWithOutput(_ output: HomeViewModelOutput) {
         switch output {
         case.setInitialInfos(let infos):
-            print(infos.seconds)
             self.minutesLabel.text = infos.minutes
             self.secondsLabel.text = infos.seconds
             self.stateView.set(with: infos.currentState)
@@ -72,9 +78,9 @@ extension HomeVC: HomeViewModelDelegate {
     
     func navigate(to route: HomeViewModelRoute) {
         switch route {
-        case .settings:
-            let vc = SettingsVCBuilder.make(rootView: self)
-            
+        case .settings(var viewModel):
+            viewModel.updateDelegate = self
+            let vc = SettingsVCBuilder.make(rootView: self, viewModel: viewModel)
             present(vc, animated: true)
         }
     }
