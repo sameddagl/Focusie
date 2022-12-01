@@ -46,9 +46,15 @@ final class HomeVC: UIViewController {
     @objc private func stopButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
-        viewModel.endTimer()
-        actionButton.isSelected = false
-        stopButton.isHidden = true
+        let alert = UIAlertController(title: "Stop this pomodoro", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModel.endTimer()
+            self.actionButton.isSelected = false
+            self.stopButton.isHidden = true
+        }))
+        present(alert, animated: true)
     }
     
     @objc private func settingsButtonTapped() {

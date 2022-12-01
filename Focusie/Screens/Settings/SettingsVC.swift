@@ -9,10 +9,10 @@ import UIKit
 
 final class SettingsVC: UIViewController {
     private let focusTimeSlider = UISlider()
-    private let focusTimeSliderLabel = FCTitleLabel(text: "25")
+    private let focusTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
     
     private let breakTimeSlider = UISlider()
-    private let breakTimeSliderLabel = FCTitleLabel(text: "5")
+    private let breakTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
     
     var viewModel: SettingsViewModelProtocol! {
         didSet {

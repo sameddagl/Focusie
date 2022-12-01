@@ -9,7 +9,7 @@ import UIKit
 
 final class FCStateView: UIView {
     let stateImage = UIImageView()
-    let stateLabel = FCTitleLabel()
+    let stateLabel = FCTitleLabel(alignment: .center, fontSize: 15)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
