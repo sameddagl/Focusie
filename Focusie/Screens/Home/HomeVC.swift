@@ -26,7 +26,7 @@ final class HomeVC: UIViewController {
         super.viewDidLoad()
         configureView()
         layout()
-        viewModel.setInitalInfos()
+        viewModel.updateInfos()
     }
     
     @objc private func actionButtonTapped() {
@@ -66,7 +66,7 @@ final class HomeVC: UIViewController {
 extension HomeVC: HomeViewModelDelegate {
     func handleWithOutput(_ output: HomeViewModelOutput) {
         switch output {
-        case.setInitialInfos(let infos):
+        case.updateInfos(let infos):
             self.minutesLabel.text = infos.minutes
             self.secondsLabel.text = infos.seconds
             self.stateView.set(with: infos.currentState)

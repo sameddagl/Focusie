@@ -16,6 +16,8 @@ final class AudioManager: NSObject {
     var currentTime: TimeInterval?
 
     func playOneTimeSound() {
+        player = nil
+        
         guard let path = Bundle.main.path(forResource: "break2", ofType:"mp3") else {
             return }
         let url = URL(fileURLWithPath: path)
@@ -42,9 +44,12 @@ final class AudioManager: NSObject {
     
     func stopPlayingOneTimeSound() {
         player?.stop()
+        player = nil
     }
     
     func playBackgroundSound(with sound: BGSound) {
+        bgPlayer = nil
+        
         if sound.rawValue.isEmpty { return }
         
         guard let path = Bundle.main.path(forResource: sound.rawValue, ofType:"mp3") else {
@@ -77,11 +82,13 @@ final class AudioManager: NSObject {
     func pausePlayingBackgroundSound() {
         currentTime = bgPlayer?.currentTime
         bgPlayer?.pause()
+        bgPlayer = nil
     }
     
     func endPlayingBackgroundSound() {
         currentTime = 0
         bgPlayer?.stop()
+        bgPlayer = nil
     }
 }
 

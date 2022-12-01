@@ -30,11 +30,11 @@ final class HomeViewModel: HomeViewModelProtocol {
     private let audioPlayer = AudioManager()
     private let selectedBGSound: BGSound = .pianoBackground
     
-    func setInitalInfos() {
+    func updateInfos() {
         setSavedValues()
         
         let time: (String, String) = convertToStr(time: focusTime)
-        notify(.setInitialInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
+        notify(.updateInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
     }
     
     func startTimer() {
@@ -68,13 +68,9 @@ final class HomeViewModel: HomeViewModelProtocol {
         guard timer != nil else { return }
         timer?.invalidate()
         timer = nil
-        
-        focusTime = 25
-        shortBreakTime = 5
-        longBreakTime = 15
         canStartTimer = true
         
-        setInitalInfos()
+        updateInfos()
         audioPlayer.endPlayingBackgroundSound()
         audioPlayer.stopPlayingOneTimeSound()
     }
@@ -94,7 +90,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     func setNewTimes(focusTime: Double, breakTime: Double) {
         self.focusTime = focusTime
         self.shortBreakTime = breakTime
-        setInitalInfos()
+        updateInfos()
     }
     
     private func setSavedValues() {
