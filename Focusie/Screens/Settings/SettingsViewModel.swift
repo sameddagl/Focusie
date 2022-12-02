@@ -13,7 +13,8 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     
     private var persistanceManager: PersistanceManagerProtocol!
     
-    init(persistanceManager: PersistanceManagerProtocol ,canChangeValues: Bool) {
+    init(updateDelegate: SettingsUpdateDelegate, persistanceManager: PersistanceManagerProtocol ,canChangeValues: Bool) {
+        self.updateDelegate = updateDelegate
         self.persistanceManager = persistanceManager
         self.canChangeValues = canChangeValues
     }

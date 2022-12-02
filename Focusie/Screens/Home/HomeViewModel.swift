@@ -31,7 +31,7 @@ final class HomeViewModel: HomeViewModelProtocol {
 
     private var currentTime: TimeInterval!
     private var currentState: States = .focus
-    private var counter = 0
+    private var breakCounter = 0
     private var canStartTimer = true
     
     private var timer: Timer?
@@ -47,20 +47,13 @@ final class HomeViewModel: HomeViewModelProtocol {
         if canStartTimer {
             canStartTimer = false
             currentTime = focusTime * 60
-            
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         }
-        else {
-            continueTimer()
-        }
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         
         audioPlayer.playBackgroundSound(with: selectedBGSound)
     }
-    
-    private func continueTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-    }
-    
+
     func pauseTimer() {
         timer?.invalidate()
         timer = nil
@@ -78,22 +71,16 @@ final class HomeViewModel: HomeViewModelProtocol {
         audioPlayer.stopPlayingOneTimeSound()
     }
     
+    func settingsTapped() {
+        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(updateDelegate:self, persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
+    }
+
     @objc private func fireTimer() {
         self.currentTime -= 1
         checkNewState()
         
         let timeStr = self.convertToStr(time: self.currentTime)
         self.notify(.updateTimer(time: timeStr))
-    }
-    
-    func settingsTapped() {
-        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
-    }
-    
-    func setNewTimes(focusTime: Double, breakTime: Double) {
-        self.focusTime = focusTime
-        self.shortBreakTime = breakTime
-        updateInfos()
     }
     
     private func setSavedValues() {
@@ -106,16 +93,16 @@ final class HomeViewModel: HomeViewModelProtocol {
 
     private func checkNewState() {
         if currentTime < 0 {
-            counter += 1
+            breakCounter += 1
             
-            if counter == 8 {
-                counter = 0
+            if breakCounter == 8 {
+                breakCounter = 0
                 currentState = .longBreak
             }
-            else if counter % 2 == 0 {
+            else if breakCounter % 2 == 0 {
                 currentState = .focus
             }
-            else if counter % 2 != 0 {
+            else if breakCounter % 2 != 0 {
                 currentState = .shortBreak
             }
             updateState()
@@ -131,6 +118,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         case .longBreak:
             currentTime = longBreakTime * 60
         }
+        
         audioPlayer.playOneTimeSound()
         notify(.updateState(state: currentState))
     }
@@ -144,5 +132,14 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     private func notify(_ output: HomeViewModelOutput) {
         delegate?.handleWithOutput(output)
+    }
+}
+
+//MARK: - Update times that set on settings
+extension HomeViewModel: SettingsUpdateDelegate {
+    func didUpdateWithTimes(focusTime: Double, breakTime: Double) {
+        self.focusTime = focusTime
+        self.shortBreakTime = breakTime
+        updateInfos()
     }
 }

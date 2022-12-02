@@ -85,15 +85,9 @@ extension HomeVC: HomeViewModelDelegate {
     func navigate(to route: HomeViewModelRoute) {
         switch route {
         case .settings(let viewModel):
-            let vc = SettingsVCBuilder.make(rootVC: self, viewModel: viewModel)
+            let vc = SettingsVCBuilder.make(viewModel: viewModel)
             present(vc, animated: true)
         }
-    }
-}
-
-extension HomeVC: SettingsUpdateDelegate {
-    func didUpdateWithTimes(focusTime: Double, breakTime: Double) {
-        viewModel.setNewTimes(focusTime: focusTime, breakTime: breakTime)
     }
 }
 

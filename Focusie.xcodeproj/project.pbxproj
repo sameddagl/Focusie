@@ -153,7 +153,6 @@
 				2CB2BA0F2936901C00C71FD3 /* Helpers */,
 				2C805A812937D3A300D0326F /* Extensions */,
 				2CEE73AD2938951F00EDB109 /* Managers */,
-				2CB2BA0C29368FCA00C71FD3 /* Model */,
 				2CB2BA0E2936901200C71FD3 /* Custom Views */,
 				2CB2BA0D29368FDB00C71FD3 /* Screens */,
 				2CEE73B0293895C300EDB109 /* Sounds */,
@@ -179,13 +178,6 @@
 				2CB2B9E629367E4E00C71FD3 /* LaunchScreen.storyboard */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		2CB2BA0C29368FCA00C71FD3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2CB2BA0D29368FDB00C71FD3 /* Screens */ = {
