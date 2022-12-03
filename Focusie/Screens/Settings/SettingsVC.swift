@@ -20,6 +20,8 @@ final class SettingsVC: UIViewController {
         }
     }
     
+    var delegate: SettingsUpdateDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -58,6 +60,8 @@ extension SettingsVC: SettingsViewModelDelegate {
             
             focusTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
             breakTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
+        case .updateTimesOnMainScreen:
+            delegate.didUpdateWithTimes()
         case .focusTimeChanged(let value):
             focusTimeSliderLabel.text = String(format: "%.0f", value)
             focusTimeSlider.setValue(value, animated: false)

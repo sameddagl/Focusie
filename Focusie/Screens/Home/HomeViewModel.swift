@@ -43,6 +43,10 @@ final class HomeViewModel: HomeViewModelProtocol {
         notify(.updateInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
     }
     
+    func didUpdateWithTimes() {
+        updateInfos()
+    }
+    
     func startTimer() {
         if canStartTimer {
             canStartTimer = false
@@ -72,7 +76,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func settingsTapped() {
-        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(updateDelegate:self, persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
+        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
     }
 
     @objc private func fireTimer() {
@@ -132,14 +136,5 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     private func notify(_ output: HomeViewModelOutput) {
         delegate?.handleWithOutput(output)
-    }
-}
-
-//MARK: - Update times that set on settings
-extension HomeViewModel: SettingsUpdateDelegate {
-    func didUpdateWithTimes(focusTime: Double, breakTime: Double) {
-        self.focusTime = focusTime
-        self.shortBreakTime = breakTime
-        updateInfos()
     }
 }

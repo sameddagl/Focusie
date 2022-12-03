@@ -9,12 +9,10 @@ import Foundation
 
 final class SettingsViewModel: SettingsViewModelProtocol {
     weak var delegate: SettingsViewModelDelegate?
-    weak var updateDelegate: SettingsUpdateDelegate?
     
     private var persistanceManager: PersistanceManagerProtocol!
     
-    init(updateDelegate: SettingsUpdateDelegate, persistanceManager: PersistanceManagerProtocol ,canChangeValues: Bool) {
-        self.updateDelegate = updateDelegate
+    init(persistanceManager: PersistanceManagerProtocol ,canChangeValues: Bool) {
         self.persistanceManager = persistanceManager
         self.canChangeValues = canChangeValues
     }
@@ -53,7 +51,7 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     func updateTimes() {
         if canChangeValues {
             saveToDefaults()
-            updateDelegate?.didUpdateWithTimes(focusTime: self.focusTime, breakTime: self.breakTime)
+            notify(.updateTimesOnMainScreen)
         }
     }
     
