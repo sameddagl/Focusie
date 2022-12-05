@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Focusie
+
+  Created by Samed Dağlı on 5.12.2022.
+  
+*/
+
+"focus_title" = "Focus";
+"short_break_title" = "Short Break";
+"long_break_title" = "Long Break";
+
+"settings_title" = "Settings";
+"focus_time" = "Focus time";
+"short_break" = "Short break time";

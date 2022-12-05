@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Focusie
+
+  Created by Samed Dağlı on 5.12.2022.
+  
+*/
+
+"focus_title" = "Odak";
+"short_break_title" = "Kısa Ara";
+"long_break_title" = "Uzun Ara";
+
+"settings_title" = "Ayarlar";
+"focus_time" = "Odaklanma süresi";
+"short_break" = "Kısa ara süresi";

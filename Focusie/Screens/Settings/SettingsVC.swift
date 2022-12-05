@@ -77,6 +77,7 @@ extension SettingsVC: SettingsViewModelDelegate {
 //MARK: - UI Related
 extension SettingsVC {
     private func configureView() {
+        title = NSLocalizedString("settings_title", comment: "")
         view.backgroundColor = .systemBackground
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
@@ -89,7 +90,7 @@ extension SettingsVC {
         
         focusTimeSlider.addTarget(self, action: #selector(focusTimeChanged), for: .valueChanged)
         
-        let focusTimeSliderView = FCSliderView(title: "Settings", valueLabel: focusTimeSliderLabel, slider: focusTimeSlider)
+        let focusTimeSliderView = FCSliderView(title: NSLocalizedString("focus_time", comment: ""), valueLabel: focusTimeSliderLabel, slider: focusTimeSlider)
         view.addSubview(focusTimeSliderView)
         
         NSLayoutConstraint.activate([
@@ -106,7 +107,7 @@ extension SettingsVC {
         
         breakTimeSlider.addTarget(self, action: #selector(breakTimeChanged), for: .valueChanged)
         
-        let breakTimeSliderView = FCSliderView(title: "Short Break Time", valueLabel: breakTimeSliderLabel, slider: breakTimeSlider)
+        let breakTimeSliderView = FCSliderView(title: NSLocalizedString("short_break", comment: ""), valueLabel: breakTimeSliderLabel, slider: breakTimeSlider)
         view.addSubview(breakTimeSliderView)
         
         NSLayoutConstraint.activate([
