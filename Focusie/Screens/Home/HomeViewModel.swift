@@ -8,9 +8,13 @@
 import Foundation
 
 enum States: String {
-    case focus = "Focus"
-    case shortBreak = "Break"
-    case longBreak = "Long Break"
+    case focus = "focus_title"
+    case shortBreak = "short_break_title"
+    case longBreak = "long_break_title"
+    
+    func getLocalizedString() ->String {
+        return NSLocalizedString(self.rawValue, comment: "")
+    }
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
@@ -70,6 +74,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         timer = nil
         canStartTimer = true
         
+        breakCounter = 0
         updateInfos()
         audioPlayer.endPlayingBackgroundSound()
         audioPlayer.stopPlayingOneTimeSound()
@@ -99,10 +104,11 @@ final class HomeViewModel: HomeViewModelProtocol {
         if currentTime < 0 {
             breakCounter += 1
             
-            if breakCounter == 8 {
-                breakCounter = 0
+            if breakCounter == 7 {
+                breakCounter = -1
                 currentState = .longBreak
             }
+            
             else if breakCounter % 2 == 0 {
                 currentState = .focus
             }

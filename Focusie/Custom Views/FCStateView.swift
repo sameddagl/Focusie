@@ -22,7 +22,7 @@ final class FCStateView: UIView {
     }
     
     func set(with state: States) {
-        stateLabel.text = state.rawValue
+        stateLabel.text = state.getLocalizedString()
 
         switch state {
         case .focus:
