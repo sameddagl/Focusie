@@ -10,11 +10,12 @@ import Foundation
 enum Keys: String {
     case focusTime = "focusTime"
     case shortBreakTime = "shortBreakTime"
+    case longBreakTime = "longBreakTime"
 }
 
 protocol PersistanceManagerProtocol {
     func retrieveData(forKey: Keys) -> Double?
-    func save(focusTime: Double, shortBreakTime: Double)
+    func save(focusTime: Double, shortBreakTime: Double, longBreakTime: Double)
 }
 
 final class PersistanceManager: PersistanceManagerProtocol {
@@ -25,8 +26,9 @@ final class PersistanceManager: PersistanceManagerProtocol {
         return value
     }
     
-    func save(focusTime: Double, shortBreakTime: Double) {
+    func save(focusTime: Double, shortBreakTime: Double, longBreakTime: Double) {
         defaults.set(focusTime, forKey: Keys.focusTime.rawValue)
         defaults.set(shortBreakTime, forKey: Keys.shortBreakTime.rawValue)
+        defaults.set(longBreakTime, forKey: Keys.longBreakTime.rawValue)
     }
 }

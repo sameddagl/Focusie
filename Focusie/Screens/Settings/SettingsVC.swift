@@ -11,8 +11,11 @@ final class SettingsVC: UIViewController {
     private let focusTimeSlider = UISlider()
     private let focusTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
     
-    private let breakTimeSlider = UISlider()
-    private let breakTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
+    private let shortBreakTimeSlider = UISlider()
+    private let shortBreakTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
+    
+    private let longBreakTimeSlider = UISlider()
+    private let longBreakTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
     
     var viewModel: SettingsViewModelProtocol! {
         didSet {
@@ -26,7 +29,8 @@ final class SettingsVC: UIViewController {
         super.viewDidLoad()
         configureView()
         layoutFocusTimeSettings()
-        layoutBreakTimeSettings()
+        layoutShortBreakTimeSettings()
+        layoutLongBreakTimeSettings()
         
         viewModel.load()
     }
@@ -39,9 +43,13 @@ final class SettingsVC: UIViewController {
         viewModel.focusTimeChanged(sliderValue: focusTimeSlider.value)
     }
     
-    @objc private func breakTimeChanged() {
-        viewModel.breakTimeChanged(sliderValue: breakTimeSlider.value)
-    }    
+    @objc private func shortBreakTimeChanged() {
+        viewModel.shortBreakTimeChanged(sliderValue: shortBreakTimeSlider.value)
+    }
+    
+    @objc private func longBreakTimeChanged() {
+        viewModel.longBreakTimeChanged(sliderValue: longBreakTimeSlider.value)
+    }
     
     @objc private func doneTapped() {
         dismiss(animated: true)
@@ -53,21 +61,27 @@ extension SettingsVC: SettingsViewModelDelegate {
         switch output {
         case .updateInitialInfos(let infos):
             focusTimeSliderLabel.text = String(format: "%.0f", infos.focusTime)
-            breakTimeSliderLabel.text = String(format: "%.0f", infos.breakTime)
+            shortBreakTimeSliderLabel.text = String(format: "%.0f", infos.shortBreakTime)
+            longBreakTimeSliderLabel.text = String(format: "%.0f", infos.longBreakTime)
             
             focusTimeSlider.setValue(infos.focusTime, animated: false)
-            breakTimeSlider.setValue(infos.breakTime, animated: false)
+            shortBreakTimeSlider.setValue(infos.shortBreakTime, animated: false)
+            longBreakTimeSlider.setValue(infos.longBreakTime, animated: false)
             
             focusTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
-            breakTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
+            shortBreakTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
+            longBreakTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
         case .updateTimesOnMainScreen:
             delegate.didUpdateWithTimes()
         case .focusTimeChanged(let value):
             focusTimeSliderLabel.text = String(format: "%.0f", value)
             focusTimeSlider.setValue(value, animated: false)
-        case .breakTimeChanged(let value):
-            breakTimeSliderLabel.text = String(format: "%.0f", value)
-            breakTimeSlider.setValue(value, animated: false)
+        case .shortBreakTimeChanged(let value):
+            shortBreakTimeSliderLabel.text = String(format: "%.0f", value)
+            shortBreakTimeSlider.setValue(value, animated: false)
+        case .longBreakTimeChanged(let value):
+            longBreakTimeSliderLabel.text = String(format: "%.0f", value)
+            longBreakTimeSlider.setValue(value, animated: false)
         case .bgSoundChanged:
             break
         }
@@ -100,20 +114,37 @@ extension SettingsVC {
         ])
     }
     
-    private func layoutBreakTimeSettings() {
-        breakTimeSlider.minimumValue = 2
-        breakTimeSlider.maximumValue = 7
-        breakTimeSlider.tintColor = .systemPink
+    private func layoutShortBreakTimeSettings() {
+        shortBreakTimeSlider.minimumValue = 2
+        shortBreakTimeSlider.maximumValue = 10
+        shortBreakTimeSlider.tintColor = .systemPink
         
-        breakTimeSlider.addTarget(self, action: #selector(breakTimeChanged), for: .valueChanged)
+        shortBreakTimeSlider.addTarget(self, action: #selector(shortBreakTimeChanged), for: .valueChanged)
         
-        let breakTimeSliderView = FCSliderView(title: NSLocalizedString("short_break", comment: ""), valueLabel: breakTimeSliderLabel, slider: breakTimeSlider)
-        view.addSubview(breakTimeSliderView)
+        let shortBreakTimeSliderView = FCSliderView(title: NSLocalizedString("short_break", comment: ""), valueLabel: shortBreakTimeSliderLabel, slider: shortBreakTimeSlider)
+        view.addSubview(shortBreakTimeSliderView)
         
         NSLayoutConstraint.activate([
-            breakTimeSliderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            breakTimeSliderView.topAnchor.constraint(equalTo: focusTimeSlider.bottomAnchor, constant: 40),
-            breakTimeSliderView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+            shortBreakTimeSliderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            shortBreakTimeSliderView.topAnchor.constraint(equalTo: focusTimeSlider.bottomAnchor, constant: 40),
+            shortBreakTimeSliderView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+        ])
+    }
+    
+    private func layoutLongBreakTimeSettings() {
+        longBreakTimeSlider.minimumValue = 10
+        longBreakTimeSlider.maximumValue = 30
+        longBreakTimeSlider.tintColor = .systemPink
+        
+        longBreakTimeSlider.addTarget(self, action: #selector(longBreakTimeChanged), for: .valueChanged)
+        
+        let longBreakTimeSliderView = FCSliderView(title: NSLocalizedString("long_break", comment: ""), valueLabel: longBreakTimeSliderLabel, slider: longBreakTimeSlider)
+        view.addSubview(longBreakTimeSliderView)
+        
+        NSLayoutConstraint.activate([
+            longBreakTimeSliderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            longBreakTimeSliderView.topAnchor.constraint(equalTo: shortBreakTimeSlider.bottomAnchor, constant: 40),
+            longBreakTimeSliderView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
     }
 }

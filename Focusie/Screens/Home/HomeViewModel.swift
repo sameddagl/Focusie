@@ -43,7 +43,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     func updateInfos() {
         setSavedValues()
         
-        let time: (String, String) = convertToStr(time: focusTime * 60)
+        let time: (String, String) = convertToStr(time: focusTime)// * 60)
         notify(.updateInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
     }
     
@@ -54,7 +54,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     func startTimer() {
         if canStartTimer {
             canStartTimer = false
-            currentTime = focusTime * 60
+            currentTime = focusTime// * 60
         }
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
@@ -95,9 +95,11 @@ final class HomeViewModel: HomeViewModelProtocol {
     private func setSavedValues() {
         guard let focusTime = persistanceManager.retrieveData(forKey: Keys.focusTime) else { return }
         guard let shortBreakTime = persistanceManager.retrieveData(forKey: Keys.shortBreakTime) else { return }
+        guard let longBreakTime = persistanceManager.retrieveData(forKey: Keys.longBreakTime) else { return }
         
         self.focusTime = focusTime
         self.shortBreakTime = shortBreakTime
+        self.longBreakTime = longBreakTime
     }
 
     private func checkNewState() {
@@ -122,11 +124,11 @@ final class HomeViewModel: HomeViewModelProtocol {
     private func updateState() {
         switch currentState {
         case .focus:
-            currentTime = focusTime * 60
+            currentTime = focusTime// * 60
         case .shortBreak:
-            currentTime = shortBreakTime * 60
+            currentTime = shortBreakTime// * 60
         case .longBreak:
-            currentTime = longBreakTime * 60
+            currentTime = longBreakTime// * 60
         }
         
         audioPlayer.playOneTimeSound()
