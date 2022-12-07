@@ -18,14 +18,15 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     }
     
     private var focusTime: Double = 25
-    private var breakTime: Double = 5
+    private var shortBreakTime: Double = 5
+    private var longBreakTime: Double = 15
     
     private let canChangeValues: Bool!
     
     func load() {
         getSavedValues()
         
-        notify(.updateInitialInfos(times: (focusTime: Float(self.focusTime), breakTime: Float(self.breakTime), areSlidersEnabled: canChangeValues)))
+        notify(.updateInitialInfos(times: (focusTime: Float(self.focusTime), shortBreakTime: Float(self.shortBreakTime), longBreakTime:Float(self.longBreakTime), areSlidersEnabled: canChangeValues)))
     }
     
     func focusTimeChanged(sliderValue: Float) {
@@ -36,13 +37,22 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         notify(.focusTimeChanged(changedValue: roundedValue))
     }
     
-    func breakTimeChanged(sliderValue: Float) {
+    func shortBreakTimeChanged(sliderValue: Float) {
         let step: Float = 1
         let roundedValue = round(sliderValue / step) * step
-        self.breakTime = Double(roundedValue)
+        self.shortBreakTime = Double(roundedValue)
         
-        notify(.breakTimeChanged(changedValue: roundedValue))
+        notify(.shortBreakTimeChanged(changedValue: roundedValue))
     }
+    
+    func longBreakTimeChanged(sliderValue: Float) {
+        let step: Float = 1
+        let roundedValue = round(sliderValue / step) * step
+        self.longBreakTime = Double(roundedValue)
+        
+        notify(.longBreakTimeChanged(changedValue: roundedValue))
+    }
+
     
     func bgSoundChanged() {
         
@@ -56,15 +66,17 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     }
     
     func saveToDefaults() {
-        persistanceManager.save(focusTime: self.focusTime, shortBreakTime: self.breakTime)
+        persistanceManager.save(focusTime: self.focusTime, shortBreakTime: self.shortBreakTime, longBreakTime: self.longBreakTime)
     }
     
     private func getSavedValues() {
         guard let focusTime = persistanceManager.retrieveData(forKey: Keys.focusTime) else { return }
         guard let shortBreakTime = persistanceManager.retrieveData(forKey: Keys.shortBreakTime) else { return }
+        guard let longBreakTime = persistanceManager.retrieveData(forKey: Keys.longBreakTime) else { return }
         
         self.focusTime = focusTime
-        self.breakTime = shortBreakTime
+        self.shortBreakTime = shortBreakTime
+        self.longBreakTime = longBreakTime
     }
 
     private func notify(_ output: SettingsOutput) {

@@ -11,16 +11,18 @@ protocol SettingsViewModelProtocol {
     var delegate: SettingsViewModelDelegate? { get set }
     func load()
     func focusTimeChanged(sliderValue: Float)
-    func breakTimeChanged(sliderValue: Float)
+    func shortBreakTimeChanged(sliderValue: Float)
+    func longBreakTimeChanged(sliderValue: Float)
     func bgSoundChanged()
     func updateTimes()
 }
 
 enum SettingsOutput {
-    case updateInitialInfos(times: (focusTime: Float, breakTime: Float, areSlidersEnabled: Bool))
+    case updateInitialInfos(times: (focusTime: Float, shortBreakTime: Float, longBreakTime: Float ,areSlidersEnabled: Bool))
     case updateTimesOnMainScreen
     case focusTimeChanged(changedValue: Float)
-    case breakTimeChanged(changedValue: Float)
+    case shortBreakTimeChanged(changedValue: Float)
+    case longBreakTimeChanged(changedValue: Float)
     case bgSoundChanged
 }
 
