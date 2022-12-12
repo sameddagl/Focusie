@@ -11,8 +11,9 @@ final class SoundSettingsVC: UIViewController {
     private var tableView: UITableView!
     
     var viewModel: SoundSettingsViewModelProtocol!
+    var delegate: SoundSettingsUpdateDelegate!
     
-    private var bgSounds = [String]()
+    private var bgSounds = [BGSound]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,9 @@ extension SoundSettingsVC: SoundSettingsViewModelDelegate {
         switch output {
         case .updateSounds(let sounds):
             bgSounds = sounds
-        case .updateWith(let sound):
-            print(sound)
+            tableView.reloadData()
+        case .updateWith:
+            delegate.didUpdateWithNewSound()
         }
     }
 }
@@ -46,13 +48,19 @@ extension SoundSettingsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = bgSounds[indexPath.row]
+        
+        let item = bgSounds[indexPath.row]
+        cell.textLabel?.text = item.title
+        
+        cell.accessoryType = item.isSelected ? .checkmark : .none
+        
         return cell
     }
 }
 
 extension SoundSettingsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
         viewModel.selectItem(at: indexPath.row)
     }
 }

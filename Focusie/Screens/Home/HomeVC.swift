@@ -93,7 +93,7 @@ extension HomeVC: HomeViewModelDelegate {
             let vc = SettingsVCBuilder.make(delegate:self, viewModel: viewModel)
             present(vc, animated: true)
         case .soundSettings:
-            let vc = SoundSettingsBuilder.make()
+            let vc = SoundSettingsBuilder.make(rootVC: self)
             present(vc, animated: true)
         }
     }
@@ -103,6 +103,12 @@ extension HomeVC: HomeViewModelDelegate {
 extension HomeVC: SettingsUpdateDelegate {
     func didUpdateWithTimes() {
         viewModel.didUpdateWithTimes()
+    }
+}
+
+extension HomeVC: SoundSettingsUpdateDelegate {
+    func didUpdateWithNewSound() {
+        viewModel.didBGSoundChanged()
     }
 }
 
@@ -171,7 +177,7 @@ extension HomeVC {
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(settingsButton)
         
-        settingsButton.setBackgroundImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
+        settingsButton.setBackgroundImage(SFSymbols.settings, for: .normal)
         settingsButton.tintColor = .label
         
         settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
@@ -188,7 +194,7 @@ extension HomeVC {
         soundSettingsButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(soundSettingsButton)
         
-        soundSettingsButton.setBackgroundImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
+        soundSettingsButton.setBackgroundImage(SFSymbols.soundsSettings, for: .normal)
         soundSettingsButton.tintColor = .label
         
         soundSettingsButton.addTarget(self, action: #selector(soundSettingsButtonTapped), for: .touchUpInside)

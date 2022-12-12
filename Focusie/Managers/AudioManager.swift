@@ -11,7 +11,7 @@ import AVFoundation
 protocol AudioManagerProtocol {
     func playOneTimeSound()
     func stopPlayingOneTimeSound()
-    func playBackgroundSound(with sound: BGSound)
+    func playBackgroundSound(with sound: BGSounds)
     func pausePlayingBackgroundSound()
     func endPlayingBackgroundSound()
 }
@@ -53,7 +53,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         player = nil
     }
     
-    func playBackgroundSound(with sound: BGSound) {
+    func playBackgroundSound(with sound: BGSounds) {
         bgPlayer = nil
         
         if sound.rawValue.isEmpty { return }

@@ -31,7 +31,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     private var focusTime: Double = 25
     private var shortBreakTime: Double = 5
     private var longBreakTime: Double = 15
-    private let selectedBGSound: BGSound = .pianoBackground
+    private var selectedBGSound: BGSounds = .none
 
     private var currentTime: TimeInterval!
     private var currentState: States = .focus
@@ -49,6 +49,12 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     func didUpdateWithTimes() {
         updateInfos()
+    }
+    
+    func didBGSoundChanged() {
+        setBGSound()
+        audioPlayer.endPlayingBackgroundSound()
+        audioPlayer.playBackgroundSound(with: selectedBGSound)
     }
     
     func startTimer() {
@@ -104,6 +110,12 @@ final class HomeViewModel: HomeViewModelProtocol {
         self.focusTime = focusTime
         self.shortBreakTime = shortBreakTime
         self.longBreakTime = longBreakTime
+        setBGSound()
+    }
+    
+    private func setBGSound() {
+        guard let bgSound = persistanceManager.retrieveBGSound() else { return }
+        self.selectedBGSound = BGSounds(rawValue: bgSound)!
     }
 
     private func checkNewState() {

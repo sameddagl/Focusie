@@ -11,6 +11,7 @@ protocol HomeViewModelProtocol {
     var delegate: HomeViewModelDelegate? { get set }
     func updateInfos()
     func didUpdateWithTimes()
+    func didBGSoundChanged()
     func startTimer()
     func pauseTimer()
     func endTimer()

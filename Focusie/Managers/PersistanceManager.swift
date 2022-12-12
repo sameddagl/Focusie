@@ -11,11 +11,14 @@ enum Keys: String {
     case focusTime = "focusTime"
     case shortBreakTime = "shortBreakTime"
     case longBreakTime = "longBreakTime"
+    case bgSound = "bgSound"
 }
 
 protocol PersistanceManagerProtocol {
     func retrieveData(forKey: Keys) -> Double?
     func save(focusTime: Double, shortBreakTime: Double, longBreakTime: Double)
+    func retrieveBGSound() -> String?
+    func saveBGSound(bgSound: BGSound)
 }
 
 final class PersistanceManager: PersistanceManagerProtocol {
@@ -31,4 +34,15 @@ final class PersistanceManager: PersistanceManagerProtocol {
         defaults.set(shortBreakTime, forKey: Keys.shortBreakTime.rawValue)
         defaults.set(longBreakTime, forKey: Keys.longBreakTime.rawValue)
     }
+    
+    func retrieveBGSound() -> String? {
+        guard let value = defaults.value(forKey: Keys.bgSound.rawValue) as? String else { return nil }
+        return value
+    }
+
+    
+    func saveBGSound(bgSound: BGSound) {
+        defaults.set(bgSound.sound.rawValue, forKey: Keys.bgSound.rawValue)
+    }
+
 }

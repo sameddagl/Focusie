@@ -39,12 +39,12 @@
 		2CEE73B92938A17C00EDB109 /* forestBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE73B62938A17C00EDB109 /* forestBackground.mp3 */; };
 		2CEE73BA2938A17C00EDB109 /* cafeBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE73B72938A17C00EDB109 /* cafeBackground.mp3 */; };
 		2CEE73BB2938A17C00EDB109 /* pianoBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE73B82938A17C00EDB109 /* pianoBackground.mp3 */; };
-		2CEE73BD2938A52800EDB109 /* AudioTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73BC2938A52800EDB109 /* AudioTypes.swift */; };
 		2CEE73BF2938A6DD00EDB109 /* SettingsVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73BE2938A6DD00EDB109 /* SettingsVCBuilder.swift */; };
 		2CEE73C12938A6FB00EDB109 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */; };
 		2CEE73C32938A74800EDB109 /* SettingsContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C22938A74800EDB109 /* SettingsContracts.swift */; };
 		2CEE73C52938A81E00EDB109 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C42938A81E00EDB109 /* SettingsViewModel.swift */; };
 		2CEE73C72938B2D700EDB109 /* FCSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C62938B2D700EDB109 /* FCSliderView.swift */; };
+		2CF11F58294744B70005D45F /* BGSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF11F57294744B70005D45F /* BGSound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,12 +94,12 @@
 		2CEE73B62938A17C00EDB109 /* forestBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forestBackground.mp3; sourceTree = "<group>"; };
 		2CEE73B72938A17C00EDB109 /* cafeBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cafeBackground.mp3; sourceTree = "<group>"; };
 		2CEE73B82938A17C00EDB109 /* pianoBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoBackground.mp3; sourceTree = "<group>"; };
-		2CEE73BC2938A52800EDB109 /* AudioTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTypes.swift; sourceTree = "<group>"; };
 		2CEE73BE2938A6DD00EDB109 /* SettingsVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVCBuilder.swift; sourceTree = "<group>"; };
 		2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		2CEE73C22938A74800EDB109 /* SettingsContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContracts.swift; sourceTree = "<group>"; };
 		2CEE73C42938A81E00EDB109 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2CEE73C62938B2D700EDB109 /* FCSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCSliderView.swift; sourceTree = "<group>"; };
+		2CF11F57294744B70005D45F /* BGSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +253,7 @@
 				2CE4308A2940A783002F5D64 /* SoundSettingsContracts.swift */,
 				2CE4308C2940A78B002F5D64 /* SoundSettingsVC.swift */,
 				2CE4308E2940A792002F5D64 /* SoundSettingsViewModel.swift */,
+				2CF11F57294744B70005D45F /* BGSound.swift */,
 			);
 			path = "Sound Settings";
 			sourceTree = "<group>";
@@ -261,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				2CEE73AE2938953900EDB109 /* AudioManager.swift */,
-				2CEE73BC2938A52800EDB109 /* AudioTypes.swift */,
 				2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */,
 			);
 			path = Managers;
@@ -402,12 +402,12 @@
 				2CEE73C32938A74800EDB109 /* SettingsContracts.swift in Sources */,
 				2CEE73C52938A81E00EDB109 /* SettingsViewModel.swift in Sources */,
 				2CE4308D2940A78B002F5D64 /* SoundSettingsVC.swift in Sources */,
+				2CF11F58294744B70005D45F /* BGSound.swift in Sources */,
 				2CEE73BF2938A6DD00EDB109 /* SettingsVCBuilder.swift in Sources */,
 				2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */,
 				2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */,
 				2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */,
 				2C4C5BA12938F7FE00E031D6 /* PersistanceManager.swift in Sources */,
-				2CEE73BD2938A52800EDB109 /* AudioTypes.swift in Sources */,
 				2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */,
 				2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */,
 				2CB2BA132936908800C71FD3 /* HomeVC.swift in Sources */,
