@@ -1,2 +1,2 @@
 # Focusie
-A pomodoro app
+A pomodoro app under development.

@@ -15,6 +15,7 @@ final class HomeVC: UIViewController {
     private let actionButton = FCActionButton()
     private let stopButton = FCStopButton()
     private let settingsButton = UIButton()
+    private let soundSettingsButton = UIButton()
     
     var viewModel: HomeViewModelProtocol! {
         didSet {
@@ -63,6 +64,10 @@ final class HomeVC: UIViewController {
     @objc private func settingsButtonTapped() {
         viewModel.settingsTapped()
     }
+    
+    @objc private func soundSettingsButtonTapped() {
+        viewModel.soundSettingsTapped()
+    }
 }
 
 //MARK: - Delegate methods
@@ -87,6 +92,9 @@ extension HomeVC: HomeViewModelDelegate {
         case .settings(let viewModel):
             let vc = SettingsVCBuilder.make(delegate:self, viewModel: viewModel)
             present(vc, animated: true)
+        case .soundSettings:
+            let vc = SoundSettingsBuilder.make()
+            present(vc, animated: true)
         }
     }
 }
@@ -108,6 +116,7 @@ extension HomeVC {
         configureStateView()
         configureButtons()
         configureSettingsButton()
+        configureSoundSettingsButton()
         
         let timeStack = UIStackView(arrangedSubviews: [minutesLabel, secondsLabel])
         timeStack.spacing = -25
@@ -172,6 +181,23 @@ extension HomeVC {
             settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             settingsButton.widthAnchor.constraint(equalToConstant: 25),
             settingsButton.heightAnchor.constraint(equalToConstant: 25)
+        ])
+    }
+    
+    private func configureSoundSettingsButton() {
+        soundSettingsButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(soundSettingsButton)
+        
+        soundSettingsButton.setBackgroundImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
+        soundSettingsButton.tintColor = .label
+        
+        soundSettingsButton.addTarget(self, action: #selector(soundSettingsButtonTapped), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            soundSettingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            soundSettingsButton.trailingAnchor.constraint(equalTo: settingsButton.leadingAnchor, constant: -20),
+            soundSettingsButton.widthAnchor.constraint(equalToConstant: 25),
+            soundSettingsButton.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
 }

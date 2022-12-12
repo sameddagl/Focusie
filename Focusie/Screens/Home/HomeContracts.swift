@@ -15,10 +15,12 @@ protocol HomeViewModelProtocol {
     func pauseTimer()
     func endTimer()
     func settingsTapped()
+    func soundSettingsTapped()
 }
 
 enum HomeViewModelRoute {
     case settings(viewModel: SettingsViewModelProtocol)
+    case soundSettings
 }
 
 enum HomeViewModelOutput {
