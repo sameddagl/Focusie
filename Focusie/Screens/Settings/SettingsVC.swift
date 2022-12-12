@@ -23,7 +23,7 @@ final class SettingsVC: UIViewController {
         }
     }
     
-    var delegate: SettingsUpdateDelegate!
+    weak var delegate: SettingsUpdateDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

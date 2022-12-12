@@ -83,6 +83,10 @@ final class HomeViewModel: HomeViewModelProtocol {
     func settingsTapped() {
         delegate?.navigate(to: .settings(viewModel: SettingsViewModel(persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
     }
+    
+    func soundSettingsTapped() {
+        delegate?.navigate(to: .soundSettings)
+    }
 
     @objc private func fireTimer() {
         self.currentTime -= 1
