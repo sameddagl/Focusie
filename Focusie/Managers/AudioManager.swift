@@ -29,7 +29,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         let url = URL(fileURLWithPath: path)
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             
             player = try AVAudioPlayer(contentsOf: url)
@@ -62,7 +62,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         let url = URL(fileURLWithPath: path)
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             
             bgPlayer = try AVAudioPlayer(contentsOf: url)

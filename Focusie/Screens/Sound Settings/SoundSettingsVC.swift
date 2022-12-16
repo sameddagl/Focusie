@@ -20,7 +20,6 @@ final class SoundSettingsVC: UIViewController {
         configureView()
         createTableView()
         viewModel.load()
-        
     }
     
     @objc private func doneTapped() {

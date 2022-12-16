@@ -41,6 +41,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     private var timer: Timer?
     
     func updateInfos() {
+        print(#function)
         setSavedValues()
         
         let time: (String, String) = convertToStr(time: focusTime)// * 60)
@@ -58,6 +59,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func startTimer() {
+        print(selectedBGSound)
         if canStartTimer {
             canStartTimer = false
             currentTime = focusTime// * 60
@@ -78,9 +80,11 @@ final class HomeViewModel: HomeViewModelProtocol {
     func endTimer() {
         timer?.invalidate()
         timer = nil
-        canStartTimer = true
         
+        canStartTimer = true
+        currentState = .focus
         breakCounter = 0
+        
         updateInfos()
         audioPlayer.endPlayingBackgroundSound()
         audioPlayer.stopPlayingOneTimeSound()
@@ -103,6 +107,8 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     private func setSavedValues() {
+        setBGSound()
+
         guard let focusTime = persistanceManager.retrieveData(forKey: Keys.focusTime) else { return }
         guard let shortBreakTime = persistanceManager.retrieveData(forKey: Keys.shortBreakTime) else { return }
         guard let longBreakTime = persistanceManager.retrieveData(forKey: Keys.longBreakTime) else { return }
@@ -110,7 +116,6 @@ final class HomeViewModel: HomeViewModelProtocol {
         self.focusTime = focusTime
         self.shortBreakTime = shortBreakTime
         self.longBreakTime = longBreakTime
-        setBGSound()
     }
     
     private func setBGSound() {
