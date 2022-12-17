@@ -10,7 +10,7 @@ import Foundation
 final class HomeVCBuilder {
     static func make() -> HomeVC {
         let vc = HomeVC()
-        let viewModel = HomeViewModel(persistanceManager: app.persistanceManager, audioPlayer: app.audioManager)
+        let viewModel = HomeViewModel(persistanceManager: app.persistanceManager, audioPlayer: app.audioManager, notificationManager: app.notificationManager)
         vc.viewModel = viewModel
         return vc
     }

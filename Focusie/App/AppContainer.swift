@@ -13,4 +13,5 @@ final class AppContainer {
     
     let audioManager = AudioManager()
     let persistanceManager = PersistanceManager()
+    let notificationManager = LocalNotificationManager()
 }

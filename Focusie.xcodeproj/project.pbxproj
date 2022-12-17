@@ -29,6 +29,7 @@
 		2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1829369E1400C71FD3 /* HomeVCBuilder.swift */; };
 		2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */; };
 		2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */; };
+		2CB7798C294CD6B700D4A1F1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7798B294CD6B700D4A1F1 /* NotificationManager.swift */; };
 		2CE430892940A778002F5D64 /* SoundSettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE430882940A778002F5D64 /* SoundSettingsBuilder.swift */; };
 		2CE4308B2940A783002F5D64 /* SoundSettingsContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4308A2940A783002F5D64 /* SoundSettingsContracts.swift */; };
 		2CE4308D2940A78B002F5D64 /* SoundSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4308C2940A78B002F5D64 /* SoundSettingsVC.swift */; };
@@ -84,6 +85,7 @@
 		2CB2BA1829369E1400C71FD3 /* HomeVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCBuilder.swift; sourceTree = "<group>"; };
 		2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTimeLabel.swift; sourceTree = "<group>"; };
 		2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCActionButton.swift; sourceTree = "<group>"; };
+		2CB7798B294CD6B700D4A1F1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		2CE430882940A778002F5D64 /* SoundSettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsBuilder.swift; sourceTree = "<group>"; };
 		2CE4308A2940A783002F5D64 /* SoundSettingsContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsContracts.swift; sourceTree = "<group>"; };
 		2CE4308C2940A78B002F5D64 /* SoundSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsVC.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				2CEE73AE2938953900EDB109 /* AudioManager.swift */,
 				2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */,
+				2CB7798B294CD6B700D4A1F1 /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				2CEE73BF2938A6DD00EDB109 /* SettingsVCBuilder.swift in Sources */,
 				2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */,
 				2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */,
+				2CB7798C294CD6B700D4A1F1 /* NotificationManager.swift in Sources */,
 				2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */,
 				2C4C5BA12938F7FE00E031D6 /* PersistanceManager.swift in Sources */,
 				2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */,

@@ -22,10 +22,12 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     private var persistanceManager: PersistanceManagerProtocol!
     private var audioPlayer: AudioManagerProtocol!
+    private var notificationManager: LocalNotificationManagerProtocol!
     
-    init(persistanceManager: PersistanceManager, audioPlayer: AudioManagerProtocol?) {
+    init(persistanceManager: PersistanceManager, audioPlayer: AudioManagerProtocol, notificationManager: LocalNotificationManagerProtocol) {
         self.persistanceManager = persistanceManager
         self.audioPlayer = audioPlayer
+        self.notificationManager = notificationManager
     }
     
     private var focusTime: Double = 25
