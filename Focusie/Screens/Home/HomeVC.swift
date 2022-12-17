@@ -234,7 +234,7 @@ extension HomeVC {
             
         ])
         
-        bannerView.adUnitID = AddKeys.testBannerID
+        bannerView.adUnitID = AddMobKeys.testBannerID
         bannerView.rootViewController = self
         bannerView.delegate = self
         bannerView.load(GADRequest())
@@ -242,7 +242,7 @@ extension HomeVC {
     
     private func configureInterstitialAdd() {
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: AddKeys.testInterstitialID, request: request) { [weak self] ad, error in
+        GADInterstitialAd.load(withAdUnitID: AddMobKeys.testInterstitialID, request: request) { [weak self] ad, error in
             guard error == nil else { return }
             self?.interstitial = ad
         }
