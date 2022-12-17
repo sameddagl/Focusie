@@ -11,7 +11,7 @@ import AVFoundation
 protocol AudioManagerProtocol {
     func playOneTimeSound()
     func stopPlayingOneTimeSound()
-    func playBackgroundSound(with sound: BGSound)
+    func playBackgroundSound(with sound: BGSounds)
     func pausePlayingBackgroundSound()
     func endPlayingBackgroundSound()
 }
@@ -29,7 +29,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         let url = URL(fileURLWithPath: path)
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(.soloAmbient, mode: .default, options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             
             player = try AVAudioPlayer(contentsOf: url)
@@ -53,7 +53,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         player = nil
     }
     
-    func playBackgroundSound(with sound: BGSound) {
+    func playBackgroundSound(with sound: BGSounds) {
         bgPlayer = nil
         
         if sound.rawValue.isEmpty { return }
@@ -62,7 +62,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         let url = URL(fileURLWithPath: path)
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(.soloAmbient, options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             
             bgPlayer = try AVAudioPlayer(contentsOf: url)

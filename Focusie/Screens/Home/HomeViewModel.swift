@@ -22,16 +22,18 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     private var persistanceManager: PersistanceManagerProtocol!
     private var audioPlayer: AudioManagerProtocol!
+    private var notificationManager: LocalNotificationManagerProtocol!
     
-    init(persistanceManager: PersistanceManager, audioPlayer: AudioManagerProtocol?) {
+    init(persistanceManager: PersistanceManager, audioPlayer: AudioManagerProtocol, notificationManager: LocalNotificationManagerProtocol) {
         self.persistanceManager = persistanceManager
         self.audioPlayer = audioPlayer
+        self.notificationManager = notificationManager
     }
     
     private var focusTime: Double = 25
     private var shortBreakTime: Double = 5
     private var longBreakTime: Double = 15
-    private let selectedBGSound: BGSound = .pianoBackground
+    private var selectedBGSound: BGSounds = .none
 
     private var currentTime: TimeInterval!
     private var currentState: States = .focus
@@ -41,6 +43,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     private var timer: Timer?
     
     func updateInfos() {
+        print(#function)
         setSavedValues()
         
         let time: (String, String) = convertToStr(time: focusTime)// * 60)
@@ -51,7 +54,14 @@ final class HomeViewModel: HomeViewModelProtocol {
         updateInfos()
     }
     
+    func didBGSoundChanged() {
+        setBGSound()
+        audioPlayer.endPlayingBackgroundSound()
+        audioPlayer.playBackgroundSound(with: selectedBGSound)
+    }
+    
     func startTimer() {
+        print(selectedBGSound)
         if canStartTimer {
             canStartTimer = false
             currentTime = focusTime// * 60
@@ -72,9 +82,11 @@ final class HomeViewModel: HomeViewModelProtocol {
     func endTimer() {
         timer?.invalidate()
         timer = nil
-        canStartTimer = true
         
+        canStartTimer = true
+        currentState = .focus
         breakCounter = 0
+        
         updateInfos()
         audioPlayer.endPlayingBackgroundSound()
         audioPlayer.stopPlayingOneTimeSound()
@@ -97,6 +109,8 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     private func setSavedValues() {
+        setBGSound()
+
         guard let focusTime = persistanceManager.retrieveData(forKey: Keys.focusTime) else { return }
         guard let shortBreakTime = persistanceManager.retrieveData(forKey: Keys.shortBreakTime) else { return }
         guard let longBreakTime = persistanceManager.retrieveData(forKey: Keys.longBreakTime) else { return }
@@ -104,6 +118,11 @@ final class HomeViewModel: HomeViewModelProtocol {
         self.focusTime = focusTime
         self.shortBreakTime = shortBreakTime
         self.longBreakTime = longBreakTime
+    }
+    
+    private func setBGSound() {
+        guard let bgSound = persistanceManager.retrieveBGSound() else { return }
+        self.selectedBGSound = BGSounds(rawValue: bgSound)!
     }
 
     private func checkNewState() {

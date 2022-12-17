@@ -14,8 +14,8 @@ protocol SoundSettingsViewModelProtocol {
 }
 
 enum SoundSettingsOutput {
-    case updateSounds(sounds: [String])
-    case updateWith(sound: BGSounds)
+    case updateSounds(sounds: [BGSound])
+    case updateWith
 }
 
 protocol SoundSettingsViewModelDelegate: AnyObject {

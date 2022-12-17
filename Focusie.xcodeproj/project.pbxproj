@@ -29,6 +29,7 @@
 		2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1829369E1400C71FD3 /* HomeVCBuilder.swift */; };
 		2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */; };
 		2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */; };
+		2CB7798C294CD6B700D4A1F1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7798B294CD6B700D4A1F1 /* NotificationManager.swift */; };
 		2CE430892940A778002F5D64 /* SoundSettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE430882940A778002F5D64 /* SoundSettingsBuilder.swift */; };
 		2CE4308B2940A783002F5D64 /* SoundSettingsContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4308A2940A783002F5D64 /* SoundSettingsContracts.swift */; };
 		2CE4308D2940A78B002F5D64 /* SoundSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4308C2940A78B002F5D64 /* SoundSettingsVC.swift */; };
@@ -39,12 +40,12 @@
 		2CEE73B92938A17C00EDB109 /* forestBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE73B62938A17C00EDB109 /* forestBackground.mp3 */; };
 		2CEE73BA2938A17C00EDB109 /* cafeBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE73B72938A17C00EDB109 /* cafeBackground.mp3 */; };
 		2CEE73BB2938A17C00EDB109 /* pianoBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CEE73B82938A17C00EDB109 /* pianoBackground.mp3 */; };
-		2CEE73BD2938A52800EDB109 /* AudioTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73BC2938A52800EDB109 /* AudioTypes.swift */; };
 		2CEE73BF2938A6DD00EDB109 /* SettingsVCBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73BE2938A6DD00EDB109 /* SettingsVCBuilder.swift */; };
 		2CEE73C12938A6FB00EDB109 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */; };
 		2CEE73C32938A74800EDB109 /* SettingsContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C22938A74800EDB109 /* SettingsContracts.swift */; };
 		2CEE73C52938A81E00EDB109 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C42938A81E00EDB109 /* SettingsViewModel.swift */; };
 		2CEE73C72938B2D700EDB109 /* FCSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEE73C62938B2D700EDB109 /* FCSliderView.swift */; };
+		2CF11F58294744B70005D45F /* BGSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF11F57294744B70005D45F /* BGSound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		2CB2BA1829369E1400C71FD3 /* HomeVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCBuilder.swift; sourceTree = "<group>"; };
 		2CB2BA1A29369F0000C71FD3 /* FCTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTimeLabel.swift; sourceTree = "<group>"; };
 		2CB2BA1C2936B10400C71FD3 /* FCActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCActionButton.swift; sourceTree = "<group>"; };
+		2CB7798B294CD6B700D4A1F1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		2CE430882940A778002F5D64 /* SoundSettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsBuilder.swift; sourceTree = "<group>"; };
 		2CE4308A2940A783002F5D64 /* SoundSettingsContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsContracts.swift; sourceTree = "<group>"; };
 		2CE4308C2940A78B002F5D64 /* SoundSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsVC.swift; sourceTree = "<group>"; };
@@ -94,12 +96,12 @@
 		2CEE73B62938A17C00EDB109 /* forestBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forestBackground.mp3; sourceTree = "<group>"; };
 		2CEE73B72938A17C00EDB109 /* cafeBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cafeBackground.mp3; sourceTree = "<group>"; };
 		2CEE73B82938A17C00EDB109 /* pianoBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoBackground.mp3; sourceTree = "<group>"; };
-		2CEE73BC2938A52800EDB109 /* AudioTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTypes.swift; sourceTree = "<group>"; };
 		2CEE73BE2938A6DD00EDB109 /* SettingsVCBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVCBuilder.swift; sourceTree = "<group>"; };
 		2CEE73C02938A6FB00EDB109 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		2CEE73C22938A74800EDB109 /* SettingsContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContracts.swift; sourceTree = "<group>"; };
 		2CEE73C42938A81E00EDB109 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2CEE73C62938B2D700EDB109 /* FCSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCSliderView.swift; sourceTree = "<group>"; };
+		2CF11F57294744B70005D45F /* BGSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGSound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				2CE4308A2940A783002F5D64 /* SoundSettingsContracts.swift */,
 				2CE4308C2940A78B002F5D64 /* SoundSettingsVC.swift */,
 				2CE4308E2940A792002F5D64 /* SoundSettingsViewModel.swift */,
+				2CF11F57294744B70005D45F /* BGSound.swift */,
 			);
 			path = "Sound Settings";
 			sourceTree = "<group>";
@@ -261,8 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				2CEE73AE2938953900EDB109 /* AudioManager.swift */,
-				2CEE73BC2938A52800EDB109 /* AudioTypes.swift */,
 				2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */,
+				2CB7798B294CD6B700D4A1F1 /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -402,12 +405,13 @@
 				2CEE73C32938A74800EDB109 /* SettingsContracts.swift in Sources */,
 				2CEE73C52938A81E00EDB109 /* SettingsViewModel.swift in Sources */,
 				2CE4308D2940A78B002F5D64 /* SoundSettingsVC.swift in Sources */,
+				2CF11F58294744B70005D45F /* BGSound.swift in Sources */,
 				2CEE73BF2938A6DD00EDB109 /* SettingsVCBuilder.swift in Sources */,
 				2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */,
 				2CB2BA1929369E1400C71FD3 /* HomeVCBuilder.swift in Sources */,
+				2CB7798C294CD6B700D4A1F1 /* NotificationManager.swift in Sources */,
 				2CB2BA1D2936B10400C71FD3 /* FCActionButton.swift in Sources */,
 				2C4C5BA12938F7FE00E031D6 /* PersistanceManager.swift in Sources */,
-				2CEE73BD2938A52800EDB109 /* AudioTypes.swift in Sources */,
 				2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */,
 				2CB2BA1B29369F0000C71FD3 /* FCTimeLabel.swift in Sources */,
 				2CB2BA132936908800C71FD3 /* HomeVC.swift in Sources */,
@@ -516,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -571,7 +575,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -592,7 +596,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Focusie;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -605,7 +609,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagl.MVVM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagli.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -627,7 +631,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Focusie;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -640,7 +644,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagl.MVVM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagli.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

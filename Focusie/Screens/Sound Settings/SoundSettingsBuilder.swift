@@ -8,12 +8,13 @@
 import UIKit
 
 final class SoundSettingsBuilder {
-    static func make() -> UINavigationController{
+    static func make(rootVC: HomeVC) -> UINavigationController{
         let vc = SoundSettingsVC()
         
-        let viewModel = SoundSettingsViewModel()
+        let viewModel = SoundSettingsViewModel(persistanceManager: app.persistanceManager)
         viewModel.delegate = vc
         vc.viewModel = viewModel
+        vc.delegate = rootVC
         
         return UINavigationController(rootViewController: vc)
     }
