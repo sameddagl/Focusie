@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
 final class HomeVC: UIViewController {
     private let stateView = FCStateView()
@@ -16,6 +17,9 @@ final class HomeVC: UIViewController {
     private let stopButton = FCStopButton()
     private let settingsButton = UIButton()
     private let soundSettingsButton = UIButton()
+    
+    private var bannerView: GADBannerView!
+    private var interstitial: GADInterstitialAd?
     
     var viewModel: HomeViewModelProtocol! {
         didSet {
@@ -53,11 +57,21 @@ final class HomeVC: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.endTimer()
-            self.actionButton.isSelected = false
-            self.stopButton.isHidden = true
+            self.restartPomodoro()
         }))
         present(alert, animated: true)
+    }
+    
+    private func restartPomodoro() {
+        viewModel.endTimer()
+        actionButton.isSelected = false
+        stopButton.isHidden = true
+        
+        if interstitial != nil {
+            interstitial!.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
+        }
     }
     
     //MARK: - Navigate to settings
@@ -123,6 +137,8 @@ extension HomeVC {
         configureButtons()
         configureSettingsButton()
         configureSoundSettingsButton()
+        configureBanner()
+        configureInterstitialAdd()
         
         let timeStack = UIStackView(arrangedSubviews: [minutesLabel, secondsLabel])
         timeStack.spacing = -25
@@ -148,7 +164,7 @@ extension HomeVC {
             stack.heightAnchor.constraint(equalToConstant: 400),
         ])
     }
-        
+    
     private func configureStateView() {
         stateView.backgroundColor = .systemGreen
         
@@ -157,7 +173,7 @@ extension HomeVC {
             stateView.widthAnchor.constraint(equalToConstant: 130),
         ])
     }
-
+    
     
     private func configureButtons() {
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
@@ -172,7 +188,7 @@ extension HomeVC {
             stopButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
-        
+    
     private func configureSettingsButton() {
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(settingsButton)
@@ -205,5 +221,39 @@ extension HomeVC {
             soundSettingsButton.widthAnchor.constraint(equalToConstant: 25),
             soundSettingsButton.heightAnchor.constraint(equalToConstant: 25)
         ])
+    }
+    
+    private func configureBanner() {
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        
+        NSLayoutConstraint.activate([
+            bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            bannerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+        ])
+        
+        bannerView.adUnitID = AddKeys.testBannerID
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+        bannerView.load(GADRequest())
+    }
+    
+    private func configureInterstitialAdd() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: AddKeys.testInterstitialID, request: request) { [weak self] ad, error in
+            guard error == nil else { return }
+            self?.interstitial = ad
+        }
+    }
+}
+
+extension HomeVC: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 1, animations: {
+            bannerView.alpha = 1
+        })
     }
 }

@@ -88,9 +88,7 @@ final class LocalNotificationManager: LocalNotificationManagerProtocol {
     }
     
     func setNotification(_ duration: Int, of type: LocalNotificationDurationType, repeats: Bool, title: String, body: String, userInfo: [AnyHashable : Any]?) {
-        requestPermission()
         addNotification(title: title, body: body)
         scheduleNotifications(duration, of: type, repeats: repeats, userInfo: userInfo)
     }
-    
 }

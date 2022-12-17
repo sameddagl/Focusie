@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/swift,xcode,macos,swiftpackagemanager
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,xcode,macos,swiftpackagemanager
 
+Focusie/Helpers/AddMobKeys.swift
+
 ### macOS ###
 # General
 .DS_Store
