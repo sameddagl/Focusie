@@ -10,6 +10,7 @@ import UIKit
 enum Images {
     static let focusState = UIImage(named: "Focus")
     static let breakState = UIImage(named: "Break")
+    static let icon = UIImage(named: "Icon")
 }
 
 enum SFSymbols {
