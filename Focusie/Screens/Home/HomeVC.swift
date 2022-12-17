@@ -67,11 +67,9 @@ final class HomeVC: UIViewController {
         actionButton.isSelected = false
         stopButton.isHidden = true
         
-        if interstitial != nil {
-            interstitial!.present(fromRootViewController: self)
-        } else {
-            print("Ad wasn't ready")
-        }
+        loadInterstitialAdd()
+        
+
     }
     
     //MARK: - Navigate to settings
@@ -138,7 +136,6 @@ extension HomeVC {
         configureSettingsButton()
         configureSoundSettingsButton()
         configureBanner()
-        configureInterstitialAdd()
         
         let timeStack = UIStackView(arrangedSubviews: [minutesLabel, secondsLabel])
         timeStack.spacing = -25
@@ -240,11 +237,18 @@ extension HomeVC {
         bannerView.load(GADRequest())
     }
     
-    private func configureInterstitialAdd() {
+    private func loadInterstitialAdd() {
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID: AddMobKeys.testInterstitialID, request: request) { [weak self] ad, error in
+            guard let self = self else { return }
             guard error == nil else { return }
-            self?.interstitial = ad
+            self.interstitial = ad
+            
+            if self.interstitial != nil {
+                self.interstitial!.present(fromRootViewController: self)
+            } else {
+                print("Ad wasn't ready")
+            }
         }
     }
 }

@@ -43,7 +43,6 @@ final class HomeViewModel: HomeViewModelProtocol {
     private var timer: Timer?
     
     func updateInfos() {
-        print(#function)
         setSavedValues()
         
         let time: (String, String) = convertToStr(time: focusTime)// * 60)
@@ -61,7 +60,6 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func startTimer() {
-        print(selectedBGSound)
         if canStartTimer {
             canStartTimer = false
             currentTime = focusTime// * 60

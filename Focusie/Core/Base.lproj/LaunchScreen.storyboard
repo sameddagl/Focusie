@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -17,16 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="ed5-bJ-31c">
-                                <rect key="frame" x="39.333333333333343" y="-86" width="314.33333333333326" height="1024"/>
+                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JHS-VC-gjv">
+                                <rect key="frame" x="39.333333333333343" y="85.333333333333314" width="314.33333333333326" height="681.33333333333348"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ed5-bJ-31c" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8" id="Ecp-jv-OXG"/>
-                            <constraint firstItem="ed5-bJ-31c" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="KmD-eA-I1V"/>
-                            <constraint firstItem="ed5-bJ-31c" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="z1z-5O-QuL"/>
+                            <constraint firstItem="JHS-VC-gjv" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.8" id="6m1-nm-sMp"/>
+                            <constraint firstItem="JHS-VC-gjv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EPG-jI-xmP"/>
+                            <constraint firstItem="JHS-VC-gjv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ya9-en-chd"/>
+                            <constraint firstItem="JHS-VC-gjv" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8" id="zha-57-rcT"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,7 +37,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon" width="1024" height="1024"/>
+        <image name="Icon" width="341.33334350585938" height="341.33334350585938"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
