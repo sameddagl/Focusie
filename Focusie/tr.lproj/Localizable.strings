@@ -14,3 +14,14 @@
 "focus_time" = "Odaklanma süresi";
 "short_break" = "Kısa ara süresi";
 "long_break" = "Uzun ara süresi";
+
+//Sound Settings
+"sound_settings_title" = "Arkaplan Sesleri";
+
+//Musics
+"silent" = "Sessiz";
+"piano" = "Piyano";
+"forest" = "Orman";
+"cafe" = "Kafe";
+"rain" = "Yağmur";
+"music_box" = "Müzik Kutusu";

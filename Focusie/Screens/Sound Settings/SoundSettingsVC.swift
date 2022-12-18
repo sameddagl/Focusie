@@ -67,6 +67,8 @@ extension SoundSettingsVC: UITableViewDelegate {
 //MARK: - UI Related
 extension SoundSettingsVC {
     private func configureView() {
+        title = "sound_settings_title".localized()
+        
         view.backgroundColor = .systemBackground
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))

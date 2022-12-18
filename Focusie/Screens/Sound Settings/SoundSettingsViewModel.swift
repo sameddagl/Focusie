@@ -10,6 +10,8 @@ enum BGSounds: String {
     case piano = "pianoBackground"
     case forest = "forestBackground"
     case cafe = "cafeBackground"
+    case rain = "rainBackground"
+    case musicBox = "musicBoxBackground"
 }
 
 import Foundation
@@ -23,10 +25,12 @@ final class SoundSettingsViewModel: SoundSettingsViewModelProtocol {
     }
     
     private var bgSounds: [BGSound] = [
-        BGSound(title: "None", isSelected: true),
-        BGSound(title: "Piano", isSelected: false),
-        BGSound(title: "Forest", isSelected: false),
-        BGSound(title: "Cafe", isSelected: false),
+        BGSound(title: "silent".localized(), isSelected: true),
+        BGSound(title: "piano".localized(), isSelected: false),
+        BGSound(title: "forest".localized(), isSelected: false),
+        BGSound(title: "cafe".localized(), isSelected: false),
+        BGSound(title: "rain".localized(), isSelected: false),
+        BGSound(title: "music_box".localized(), isSelected: false)
     ]
 
     func load() {

@@ -55,8 +55,10 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     func didBGSoundChanged() {
         setBGSound()
-        audioPlayer.endPlayingBackgroundSound()
-        audioPlayer.playBackgroundSound(with: selectedBGSound)
+        if !canStartTimer {
+            audioPlayer.endPlayingBackgroundSound()
+            audioPlayer.playBackgroundSound(with: selectedBGSound)
+        }
     }
     
     func startTimer() {
