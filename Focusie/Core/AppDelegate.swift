@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UINavigationBar.appearance().tintColor = .systemGreen
         
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "710b71fe6f47e171ae880c39d06bd7d8" ]
         requestTrackingPermission()
         
         return true

@@ -20,6 +20,7 @@ enum States: String {
 final class HomeViewModel: HomeViewModelProtocol {
     weak var delegate: HomeViewModelDelegate?
     
+    //MARK: - Injections
     private var persistanceManager: PersistanceManagerProtocol!
     private var audioPlayer: AudioManagerProtocol!
     private var notificationManager: LocalNotificationManagerProtocol!
@@ -30,6 +31,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         self.notificationManager = notificationManager
     }
     
+    //MARK: - Properties
     private var focusTime: Double = 25
     private var shortBreakTime: Double = 5
     private var longBreakTime: Double = 15
@@ -42,10 +44,11 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     private var timer: Timer?
     
+    //MARK: - Main Functions
     func updateInfos() {
         setSavedValues()
         
-        let time: (String, String) = convertToStr(time: focusTime)// * 60)
+        let time: (String, String) = convertToStr(time: focusTime * 60)
         notify(.updateInfos(infos: (minutes: time.0, seconds: time.1, currentState: currentState)))
     }
     
@@ -55,19 +58,30 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     func didBGSoundChanged() {
         setBGSound()
-        audioPlayer.endPlayingBackgroundSound()
-        audioPlayer.playBackgroundSound(with: selectedBGSound)
+        if !canStartTimer {
+            audioPlayer.endPlayingBackgroundSound()
+            audioPlayer.playBackgroundSound(with: selectedBGSound)
+        }
     }
     
+    //MARK: - Timer Functions
     func startTimer() {
         if canStartTimer {
             canStartTimer = false
-            currentTime = focusTime// * 60
+            currentTime = focusTime * 60
         }
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
         
         audioPlayer.playBackgroundSound(with: selectedBGSound)
+    }
+    
+    @objc private func fireTimer() {
+        self.currentTime -= 1
+        checkNewState()
+        
+        let timeStr = self.convertToStr(time: self.currentTime)
+        self.notify(.updateTimer(time: timeStr))
     }
 
     func pauseTimer() {
@@ -90,22 +104,16 @@ final class HomeViewModel: HomeViewModelProtocol {
         audioPlayer.stopPlayingOneTimeSound()
     }
     
+    //MARK: - Button Actions
     func settingsTapped() {
-        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
+        delegate?.navigate(to: .settings(canChangeValues: canStartTimer))
     }
     
     func soundSettingsTapped() {
         delegate?.navigate(to: .soundSettings)
     }
-
-    @objc private func fireTimer() {
-        self.currentTime -= 1
-        checkNewState()
-        
-        let timeStr = self.convertToStr(time: self.currentTime)
-        self.notify(.updateTimer(time: timeStr))
-    }
     
+    //MARK: - Persistance Functions
     private func setSavedValues() {
         setBGSound()
 
@@ -123,6 +131,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         self.selectedBGSound = BGSounds(rawValue: bgSound)!
     }
 
+    //MARK: - Check States
     private func checkNewState() {
         if currentTime < 0 {
             breakCounter += 1
@@ -145,17 +154,18 @@ final class HomeViewModel: HomeViewModelProtocol {
     private func updateState() {
         switch currentState {
         case .focus:
-            currentTime = focusTime// * 60
+            currentTime = focusTime * 60
         case .shortBreak:
-            currentTime = shortBreakTime// * 60
+            currentTime = shortBreakTime * 60
         case .longBreak:
-            currentTime = longBreakTime// * 60
+            currentTime = longBreakTime * 60
         }
         
         audioPlayer.playOneTimeSound()
         notify(.updateState(state: currentState))
     }
     
+    //MARK: - Helper Functions
     private func convertToStr(time: Double) -> (String, String) {
         let minutes = String(format: "%02d", Int(time) / 60)
         let seconds = String(format: "%02d", Int(time) % 60)

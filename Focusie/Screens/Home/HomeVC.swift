@@ -10,6 +10,7 @@ import AVFoundation
 import GoogleMobileAds
 
 final class HomeVC: UIViewController {
+    //MARK: - UI Properties
     private let stateView = FCStateView()
     private let minutesLabel = FCTimeLabel()
     private let secondsLabel = FCTimeLabel()
@@ -21,11 +22,8 @@ final class HomeVC: UIViewController {
     private var bannerView: GADBannerView!
     private var interstitial: GADInterstitialAd?
     
-    var viewModel: HomeViewModelProtocol! {
-        didSet {
-            viewModel.delegate = self
-        }
-    }
+    //MARK: - Properties
+    var viewModel: HomeViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,8 +99,8 @@ extension HomeVC: HomeViewModelDelegate {
     
     func navigate(to route: HomeViewModelRoute) {
         switch route {
-        case .settings(let viewModel):
-            let vc = SettingsVCBuilder.make(delegate:self, viewModel: viewModel)
+        case .settings(let canChangeValues):
+            let vc = SettingsVCBuilder.make(delegate:self, canChangeValues: canChangeValues)
             present(vc, animated: true)
         case .soundSettings:
             let vc = SoundSettingsBuilder.make(rootVC: self)
@@ -246,13 +244,12 @@ extension HomeVC {
             
             if self.interstitial != nil {
                 self.interstitial!.present(fromRootViewController: self)
-            } else {
-                print("Ad wasn't ready")
             }
         }
     }
 }
 
+//MARK: - Banner adds delegate
 extension HomeVC: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         bannerView.alpha = 0

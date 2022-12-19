@@ -13,14 +13,18 @@ struct BGSound {
     
     var sound: BGSounds {
         switch title {
-        case "None":
+        case "silent".localized():
             return .none
-        case "Piano":
+        case "piano".localized():
             return .piano
-        case "Forest":
+        case "forest".localized():
             return .forest
-        case "Cafe":
+        case "cafe".localized():
             return .cafe
+        case "rain".localized():
+            return .rain
+        case "music_box".localized():
+            return .musicBox
         default:
             return .none
         }

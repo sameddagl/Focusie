@@ -52,11 +52,6 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         
         notify(.longBreakTimeChanged(changedValue: roundedValue))
     }
-
-    
-    func bgSoundChanged() {
-        
-    }
     
     func updateTimes() {
         if canChangeValues {
@@ -65,7 +60,24 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         }
     }
     
-    func saveToDefaults() {
+    func contactUsTapped() {
+        notify(.openMail)
+    }
+    
+    func reviewTapped() {
+        guard let url = URLs.productURL else { return }
+        var compoments = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        compoments?.queryItems = [URLQueryItem(name: "action", value: "write-review")]
+        guard let writeReviewURL = compoments?.url else { return }
+        notify(.openProductPage(url: writeReviewURL))
+    }
+    
+    func shareTapped() {
+        guard let url = URLs.productURL else { return }
+        notify(.openSharePage(url: url))
+    }
+    
+    private func saveToDefaults() {
         persistanceManager.save(focusTime: self.focusTime, shortBreakTime: self.shortBreakTime, longBreakTime: self.longBreakTime)
     }
     

@@ -10,7 +10,25 @@
 "short_break_title" = "Short Break";
 "long_break_title" = "Long Break";
 
+//Settings
 "settings_title" = "Settings";
-"focus_time" = "Focus time";
-"short_break" = "Short break time";
-"long_break" = "Long break time";
+"about" = "About";
+"focus_time" = "Focus duration";
+"short_break" = "Short break duration";
+"long_break" = "Long break duration";
+//About section
+"contact_us" = "📪 Contact Us";
+"review" = "⭐️ Rate & Comment";
+"share" = "🎉 Share with friends";
+
+//Sound Settings
+"sound_settings_title" = "Background Sounds";
+
+//Musics
+"silent" = "Silent";
+"piano" = "Piano";
+"forest" = "Forest";
+"cafe" = "Cafe";
+"rain" = "Rain";
+"music_box" = "Music Box";
+

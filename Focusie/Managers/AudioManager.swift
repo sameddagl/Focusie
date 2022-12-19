@@ -17,11 +17,13 @@ protocol AudioManagerProtocol {
 }
 
 final class AudioManager: NSObject, AudioManagerProtocol {
+    //MARK: - Properties
     var player: AVAudioPlayer?
     var bgPlayer: AVAudioPlayer?
     
     var currentTime: TimeInterval?
 
+    //MARK: - Play break sounds
     func playOneTimeSound() {
         player = nil
         
@@ -53,6 +55,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         player = nil
     }
     
+    //MARK: - Play BG Sounds
     func playBackgroundSound(with sound: BGSounds) {
         bgPlayer = nil
         

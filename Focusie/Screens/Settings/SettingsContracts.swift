@@ -13,8 +13,10 @@ protocol SettingsViewModelProtocol {
     func focusTimeChanged(sliderValue: Float)
     func shortBreakTimeChanged(sliderValue: Float)
     func longBreakTimeChanged(sliderValue: Float)
-    func bgSoundChanged()
     func updateTimes()
+    func contactUsTapped()
+    func reviewTapped()
+    func shareTapped()
 }
 
 enum SettingsOutput {
@@ -23,7 +25,9 @@ enum SettingsOutput {
     case focusTimeChanged(changedValue: Float)
     case shortBreakTimeChanged(changedValue: Float)
     case longBreakTimeChanged(changedValue: Float)
-    case bgSoundChanged
+    case openProductPage(url: URL)
+    case openSharePage(url: URL)
+    case openMail
 }
 
 protocol SettingsViewModelDelegate: AnyObject {
