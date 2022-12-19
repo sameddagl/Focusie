@@ -20,7 +20,7 @@ protocol HomeViewModelProtocol {
 }
 
 enum HomeViewModelRoute {
-    case settings(viewModel: SettingsViewModelProtocol)
+    case settings(canChangeValues: Bool)
     case soundSettings
 }
 

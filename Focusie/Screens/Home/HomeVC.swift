@@ -21,11 +21,7 @@ final class HomeVC: UIViewController {
     private var bannerView: GADBannerView!
     private var interstitial: GADInterstitialAd?
     
-    var viewModel: HomeViewModelProtocol! {
-        didSet {
-            viewModel.delegate = self
-        }
-    }
+    var viewModel: HomeViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,8 +97,8 @@ extension HomeVC: HomeViewModelDelegate {
     
     func navigate(to route: HomeViewModelRoute) {
         switch route {
-        case .settings(let viewModel):
-            let vc = SettingsVCBuilder.make(delegate:self, viewModel: viewModel)
+        case .settings(let canChangeValues):
+            let vc = SettingsVCBuilder.make(delegate:self, canChangeValues: canChangeValues)
             present(vc, animated: true)
         case .soundSettings:
             let vc = SoundSettingsBuilder.make(rootVC: self)

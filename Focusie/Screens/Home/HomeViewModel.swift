@@ -93,7 +93,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     }
     
     func settingsTapped() {
-        delegate?.navigate(to: .settings(viewModel: SettingsViewModel(persistanceManager: app.persistanceManager, canChangeValues: canStartTimer)))
+        delegate?.navigate(to: .settings(canChangeValues: canStartTimer))
     }
     
     func soundSettingsTapped() {

@@ -17,3 +17,7 @@ enum SFSymbols {
     static let settings = UIImage(systemName: "slider.horizontal.3")
     static let soundsSettings = UIImage(systemName: "music.note.list")
 }
+
+enum URLs {
+    static let productURL = URL(string: "https://apps.apple.com/app/focusie/id1660215268")
+}

@@ -8,11 +8,13 @@
 import UIKit
 
 final class SettingsVCBuilder {
-    static func make(delegate:HomeVC ,viewModel: SettingsViewModelProtocol) -> UINavigationController {
+    static func make(delegate:HomeVC ,canChangeValues: Bool) -> UINavigationController {
         let vc = SettingsVC()
+        let viewModel = SettingsViewModel(persistanceManager: app.persistanceManager, canChangeValues: canChangeValues)
         
         vc.delegate = delegate
         vc.viewModel = viewModel
+        viewModel.delegate = vc
         
         let nav = UINavigationController(rootViewController: vc)
         

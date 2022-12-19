@@ -17,7 +17,6 @@
 		2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7D2937D31D00D0326F /* FCStateView.swift */; };
 		2C805A802937D36400D0326F /* FCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7F2937D36400D0326F /* FCTitleLabel.swift */; };
 		2C805A832937D3B300D0326F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A822937D3B300D0326F /* UIView+Ext.swift */; };
-		2C805A852937DB0000D0326F /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A842937DB0000D0326F /* UIViewController+Ext.swift */; };
 		2C8C98DD294EF03A006078C2 /* rainBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C8C98DC294EF039006078C2 /* rainBackground.mp3 */; };
 		2C8C98DF294EF041006078C2 /* musicBoxBackground.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C8C98DE294EF041006078C2 /* musicBoxBackground.mp3 */; };
 		2C8C98E1294EF0F1006078C2 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C98E0294EF0F1006078C2 /* String+Ext.swift */; };
@@ -74,7 +73,6 @@
 		2C805A7D2937D31D00D0326F /* FCStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStateView.swift; sourceTree = "<group>"; };
 		2C805A7F2937D36400D0326F /* FCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTitleLabel.swift; sourceTree = "<group>"; };
 		2C805A822937D3B300D0326F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		2C805A842937DB0000D0326F /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		2C8C98DC294EF039006078C2 /* rainBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rainBackground.mp3; sourceTree = "<group>"; };
 		2C8C98DE294EF041006078C2 /* musicBoxBackground.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = musicBoxBackground.mp3; sourceTree = "<group>"; };
 		2C8C98E0294EF0F1006078C2 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				2C805A822937D3B300D0326F /* UIView+Ext.swift */,
-				2C805A842937DB0000D0326F /* UIViewController+Ext.swift */,
 				2C8C98E0294EF0F1006078C2 /* String+Ext.swift */,
 			);
 			path = Extensions;
@@ -428,7 +425,6 @@
 				2C7D586E29391B2800AE5668 /* Constants.swift in Sources */,
 				2CEE73C12938A6FB00EDB109 /* SettingsVC.swift in Sources */,
 				2CB2BA17293690CA00C71FD3 /* HomeContracts.swift in Sources */,
-				2C805A852937DB0000D0326F /* UIViewController+Ext.swift in Sources */,
 				2C805A802937D36400D0326F /* FCTitleLabel.swift in Sources */,
 				2CEE73C32938A74800EDB109 /* SettingsContracts.swift in Sources */,
 				2CEE73C52938A81E00EDB109 /* SettingsViewModel.swift in Sources */,
