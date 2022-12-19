@@ -10,6 +10,7 @@ import AVFoundation
 import GoogleMobileAds
 
 final class HomeVC: UIViewController {
+    //MARK: - UI Properties
     private let stateView = FCStateView()
     private let minutesLabel = FCTimeLabel()
     private let secondsLabel = FCTimeLabel()
@@ -21,6 +22,7 @@ final class HomeVC: UIViewController {
     private var bannerView: GADBannerView!
     private var interstitial: GADInterstitialAd?
     
+    //MARK: - Properties
     var viewModel: HomeViewModelProtocol!
     
     override func viewDidLoad() {
@@ -242,13 +244,12 @@ extension HomeVC {
             
             if self.interstitial != nil {
                 self.interstitial!.present(fromRootViewController: self)
-            } else {
-                print("Ad wasn't ready")
             }
         }
     }
 }
 
+//MARK: - Banner adds delegate
 extension HomeVC: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         bannerView.alpha = 0

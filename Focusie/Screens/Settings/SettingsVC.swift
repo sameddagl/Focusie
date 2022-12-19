@@ -9,6 +9,7 @@ import UIKit
 import MessageUI
 
 final class SettingsVC: UIViewController {
+    //MARK: - UI Properties
     private let focusTimeSlider = UISlider()
     private let focusTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
     
@@ -20,11 +21,12 @@ final class SettingsVC: UIViewController {
     
     private var tableView: UITableView!
     
+    //MARK: - Properties
     var viewModel: SettingsViewModelProtocol!
     
     weak var delegate: SettingsUpdateDelegate!
     
-    private var tableViewOptions = ["📪 Contact us", "⭐️ Rate & Comment", "🎉 Share with friends"]
+    private var tableViewOptions = ["contact_us".localized(), "review".localized(), "share".localized()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,7 @@ final class SettingsVC: UIViewController {
         viewModel.updateTimes()
     }
     
+    //MARK: - Slider Actions
     @objc private func focusTimeChanged() {
         viewModel.focusTimeChanged(sliderValue: focusTimeSlider.value)
     }
@@ -53,8 +56,23 @@ final class SettingsVC: UIViewController {
         viewModel.longBreakTimeChanged(sliderValue: longBreakTimeSlider.value)
     }
     
+    //MARK: - Button Actions
     @objc private func doneTapped() {
         dismiss(animated: true)
+    }
+    
+    private func updateValues(values: (focusTime: Float, shortBreakTime: Float, longBreakTime: Float ,areSlidersEnabled: Bool)) {
+        focusTimeSliderLabel.text = String(format: "%.0f", values.focusTime)
+        shortBreakTimeSliderLabel.text = String(format: "%.0f", values.shortBreakTime)
+        longBreakTimeSliderLabel.text = String(format: "%.0f", values.longBreakTime)
+        
+        focusTimeSlider.setValue(values.focusTime, animated: false)
+        shortBreakTimeSlider.setValue(values.shortBreakTime, animated: false)
+        longBreakTimeSlider.setValue(values.longBreakTime, animated: false)
+        
+        focusTimeSlider.isUserInteractionEnabled = values.areSlidersEnabled
+        shortBreakTimeSlider.isUserInteractionEnabled = values.areSlidersEnabled
+        longBreakTimeSlider.isUserInteractionEnabled = values.areSlidersEnabled
     }
     
     private func sendEmail() {
@@ -68,21 +86,12 @@ final class SettingsVC: UIViewController {
     }
 }
 
+//MARK: - View Model Outputs
 extension SettingsVC: SettingsViewModelDelegate {
     func handleWithOutput(_ output: SettingsOutput) {
         switch output {
-        case .updateInitialInfos(let infos):
-            focusTimeSliderLabel.text = String(format: "%.0f", infos.focusTime)
-            shortBreakTimeSliderLabel.text = String(format: "%.0f", infos.shortBreakTime)
-            longBreakTimeSliderLabel.text = String(format: "%.0f", infos.longBreakTime)
-            
-            focusTimeSlider.setValue(infos.focusTime, animated: false)
-            shortBreakTimeSlider.setValue(infos.shortBreakTime, animated: false)
-            longBreakTimeSlider.setValue(infos.longBreakTime, animated: false)
-            
-            focusTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
-            shortBreakTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
-            longBreakTimeSlider.isUserInteractionEnabled = infos.areSlidersEnabled
+        case .updateInitialInfos(let values):
+            updateValues(values: values)
         case .updateTimesOnMainScreen:
             delegate.didUpdateWithTimes()
         case .focusTimeChanged(let value):
@@ -107,12 +116,14 @@ extension SettingsVC: SettingsViewModelDelegate {
     }
 }
 
+//MARK: - Mail View Delegate
 extension SettingsVC: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
 }
 
+//MARK: - Table View Delegates
 extension SettingsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewOptions.count
@@ -128,7 +139,7 @@ extension SettingsVC: UITableViewDataSource {
 
 extension SettingsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "About"
+        return "about".localized()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -219,7 +230,7 @@ extension SettingsVC {
         NSLayoutConstraint.activate([
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.topAnchor.constraint(equalTo: longBreakTimeSlider.bottomAnchor, constant: 20),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }

@@ -10,10 +10,16 @@
 "short_break_title" = "Kısa Ara";
 "long_break_title" = "Uzun Ara";
 
+//Settings
 "settings_title" = "Ayarlar";
+"about" = "Hakkımızda";
 "focus_time" = "Odaklanma süresi";
 "short_break" = "Kısa ara süresi";
 "long_break" = "Uzun ara süresi";
+//About section
+"contact_us" = "📪 Bize ulaş";
+"review" = "⭐️ Uygulamayı değerlendir";
+"share" = "🎉 Arkadaşlarınla paylaş";
 
 //Sound Settings
 "sound_settings_title" = "Arkaplan Sesleri";

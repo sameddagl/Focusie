@@ -62,7 +62,6 @@ final class LocalNotificationManager: LocalNotificationManagerProtocol {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             UNUserNotificationCenter.current().add(request) { error in
                 guard error == nil else { return }
-                print("Scheduling notification with id: \(notification.id)")
             }
         }
         notifications.removeAll()
