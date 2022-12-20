@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C104116293DE27500008D1C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C104118293DE27500008D1C /* Localizable.strings */; };
+		2C20E0CD29525EEF008FE35A /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C20E0CC29525EEF008FE35A /* silence.mp3 */; };
 		2C4C5B9F2938F0E800E031D6 /* FCBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C5B9E2938F0E800E031D6 /* FCBodyLabel.swift */; };
 		2C4C5BA12938F7FE00E031D6 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */; };
 		2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63D2722938E0BB00B3B615 /* FCStopButton.swift */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		2C104117293DE27500008D1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C104119293DE30700008D1C /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C20E0CC29525EEF008FE35A /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
 		2C4C5B9E2938F0E800E031D6 /* FCBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCBodyLabel.swift; sourceTree = "<group>"; };
 		2C4C5BA02938F7FE00E031D6 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		2C63D2722938E0BB00B3B615 /* FCStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStopButton.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		2CEE73B52938A17C00EDB109 /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				2C20E0CC29525EEF008FE35A /* silence.mp3 */,
 				2CEE73B82938A17C00EDB109 /* pianoBackground.mp3 */,
 				2CEE73B62938A17C00EDB109 /* forestBackground.mp3 */,
 				2CEE73B72938A17C00EDB109 /* cafeBackground.mp3 */,
@@ -399,6 +402,7 @@
 				2C8C98DF294EF041006078C2 /* musicBoxBackground.mp3 in Resources */,
 				2CEE73BB2938A17C00EDB109 /* pianoBackground.mp3 in Resources */,
 				2CEE73B92938A17C00EDB109 /* forestBackground.mp3 in Resources */,
+				2C20E0CD29525EEF008FE35A /* silence.mp3 in Resources */,
 				2C8C98DD294EF03A006078C2 /* rainBackground.mp3 in Resources */,
 				2CB2B9E829367E4E00C71FD3 /* LaunchScreen.storyboard in Resources */,
 				2CEE73BA2938A17C00EDB109 /* cafeBackground.mp3 in Resources */,
@@ -617,12 +621,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 49Z33V7QZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Focusie;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -634,7 +639,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagli.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -652,12 +657,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 49Z33V7QZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Focusie;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -669,7 +675,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagli.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

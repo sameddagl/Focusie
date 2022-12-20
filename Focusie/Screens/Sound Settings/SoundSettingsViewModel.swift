@@ -6,7 +6,7 @@
 //
 
 enum BGSounds: String {
-    case none
+    case none = "silence"
     case piano = "pianoBackground"
     case forest = "forestBackground"
     case cafe = "cafeBackground"

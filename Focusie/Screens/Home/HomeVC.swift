@@ -43,6 +43,7 @@ final class HomeVC: UIViewController {
             viewModel.startTimer()
         }
         else {
+            loadInterstitialAdd()
             viewModel.pauseTimer()
         }
     }
@@ -66,8 +67,6 @@ final class HomeVC: UIViewController {
         stopButton.isHidden = true
         
         loadInterstitialAdd()
-        
-
     }
     
     //MARK: - Navigate to settings
@@ -253,7 +252,7 @@ extension HomeVC {
 extension HomeVC: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         bannerView.alpha = 0
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             bannerView.alpha = 1
         })
     }

@@ -65,7 +65,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         let url = URL(fileURLWithPath: path)
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.soloAmbient, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             
             bgPlayer = try AVAudioPlayer(contentsOf: url)
