@@ -43,7 +43,11 @@ final class HomeVC: UIViewController {
             viewModel.startTimer()
         }
         else {
-            loadInterstitialAdd()
+            let randomInt = Int.random(in: 0...4)
+            if  randomInt == 1 || randomInt == 3 {
+                view.isUserInteractionEnabled = false
+                loadInterstitialAdd()
+            }
             viewModel.pauseTimer()
         }
     }
