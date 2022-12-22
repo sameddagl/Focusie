@@ -32,3 +32,18 @@
 "rain" = "Rain";
 "music_box" = "Music Box";
 
+//Alerts
+"end_pomodoro" = "End this pomodoro?";
+"cancel" = "Cancel";
+"yes" = "Yes";
+
+//Notifications
+"reminder_title" = "Hey! Where have you been?";
+"reminder_body" = "I am here in case you need to stay focused.";
+
+"focus_time_title" = "Your break is over!";
+"focus_time_body" = " It's time to get back to studying";
+
+"break_time_title" = "Congratulations!";
+"break_time_body" = " Take a short break to rest";
+

@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-        app.notificationManager.setNotification(4, of: .days, repeats: true, title: "Hey! Where have you been?", body: "I am here in case you need to stay focused.", userInfo: nil)
+        app.notificationManager.setNotification(2, of: .days, repeats: true, title: "reminder_title".localized(), body: "reminder_body".localized(), userInfo: nil)
     }
     
     private func requestNotificationPermission() {

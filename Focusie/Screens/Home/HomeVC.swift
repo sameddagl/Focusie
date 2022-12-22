@@ -43,6 +43,11 @@ final class HomeVC: UIViewController {
             viewModel.startTimer()
         }
         else {
+            let randomInt = Int.random(in: 0...4)
+            if  randomInt == 1 || randomInt == 3 {
+                view.isUserInteractionEnabled = false
+                loadInterstitialAdd()
+            }
             viewModel.pauseTimer()
         }
     }
@@ -51,9 +56,9 @@ final class HomeVC: UIViewController {
     @objc private func stopButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
-        let alert = UIAlertController(title: "Stop this pomodoro", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
+        let alert = UIAlertController(title: "end_pomodoro".localized(), message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "cancel".localized(), style: .cancel))
+        alert.addAction(UIAlertAction(title: "yes".localized(), style: .destructive, handler: { [weak self] _ in
             guard let self = self else { return }
             self.restartPomodoro()
         }))
@@ -61,13 +66,12 @@ final class HomeVC: UIViewController {
     }
     
     private func restartPomodoro() {
+        view.isUserInteractionEnabled = false
         viewModel.endTimer()
         actionButton.isSelected = false
         stopButton.isHidden = true
         
         loadInterstitialAdd()
-        
-
     }
     
     //MARK: - Navigate to settings
@@ -229,7 +233,7 @@ extension HomeVC {
             
         ])
         
-        bannerView.adUnitID = AddMobKeys.testBannerID
+        bannerView.adUnitID = AddMobKeys.homeBannerID
         bannerView.rootViewController = self
         bannerView.delegate = self
         bannerView.load(GADRequest())
@@ -237,8 +241,9 @@ extension HomeVC {
     
     private func loadInterstitialAdd() {
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: AddMobKeys.testInterstitialID, request: request) { [weak self] ad, error in
+        GADInterstitialAd.load(withAdUnitID: AddMobKeys.interstitialID, request: request) { [weak self] ad, error in
             guard let self = self else { return }
+            self.view.isUserInteractionEnabled = true
             guard error == nil else { return }
             self.interstitial = ad
             
@@ -253,7 +258,7 @@ extension HomeVC {
 extension HomeVC: GADBannerViewDelegate {
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         bannerView.alpha = 0
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             bannerView.alpha = 1
         })
     }
