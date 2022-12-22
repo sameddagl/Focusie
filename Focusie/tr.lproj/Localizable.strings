@@ -31,3 +31,18 @@
 "cafe" = "Kafe";
 "rain" = "Yağmur";
 "music_box" = "Müzik Kutusu";
+
+//Alerts
+"end_pomodoro" = "Pomodoroyu bitir?";
+"cancel" = "İptal";
+"yes" = "Evet";
+
+//Notifications
+"reminder_title" = "Hey! Nerelerdesin?";
+"reminder_body" = "Çalışmak için odaklanamaya ihtiyaç duyduğun zaman buradayım.";
+
+"focus_time_title" = "Tebrikler. Bir pomodoro oturumunu tamamladın!";
+"focus_time_body" = "Kısa bir mola verin ve dinlenin";
+
+"break_time_title" = "Molan bitti!";
+"break_time_body" = "Çalışmaya geri dönme zamanı.";

@@ -52,9 +52,9 @@ final class HomeVC: UIViewController {
     @objc private func stopButtonTapped() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
-        let alert = UIAlertController(title: "Stop this pomodoro", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
+        let alert = UIAlertController(title: "end_pomodoro".localized(), message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "cancel".localized(), style: .cancel))
+        alert.addAction(UIAlertAction(title: "yes".localized(), style: .destructive, handler: { [weak self] _ in
             guard let self = self else { return }
             self.restartPomodoro()
         }))
@@ -62,6 +62,7 @@ final class HomeVC: UIViewController {
     }
     
     private func restartPomodoro() {
+        view.isUserInteractionEnabled = false
         viewModel.endTimer()
         actionButton.isSelected = false
         stopButton.isHidden = true
@@ -238,6 +239,7 @@ extension HomeVC {
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID: AddMobKeys.testInterstitialID, request: request) { [weak self] ad, error in
             guard let self = self else { return }
+            self.view.isUserInteractionEnabled = true
             guard error == nil else { return }
             self.interstitial = ad
             

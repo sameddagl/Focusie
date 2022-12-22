@@ -155,10 +155,13 @@ final class HomeViewModel: HomeViewModelProtocol {
         switch currentState {
         case .focus:
             currentTime = focusTime * 60
+            notificationManager.setNotification(1, of: .seconds, repeats: false, title: "focus_time_title".localized(), body: "focus_time_body".localized(), userInfo: nil)
         case .shortBreak:
             currentTime = shortBreakTime * 60
+            notificationManager.setNotification(1, of: .seconds, repeats: false, title: "break_time_title".localized(), body: "break_time_body".localized(), userInfo: nil)
         case .longBreak:
             currentTime = longBreakTime * 60
+            notificationManager.setNotification(1, of: .seconds, repeats: false, title: "break_time_title".localized(), body: "break_time_body".localized(), userInfo: nil)
         }
         
         audioPlayer.playOneTimeSound()
