@@ -249,7 +249,7 @@ extension SettingsVC {
             
         ])
         
-        bannerView.adUnitID = AddMobKeys.testBannerID
+        bannerView.adUnitID = AddMobKeys.settingsBannerID
         bannerView.rootViewController = self
         bannerView.delegate = self
         bannerView.load(GADRequest())
