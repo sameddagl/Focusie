@@ -14,9 +14,9 @@ It is available on App Store. https://apple.co/3WwILYp
 - Timer
 - Background Support
 - Local notifications
+- Google AdMob SDK
 - MVVM Architectural Pattern
 - Programmatic UI without Storyboards
-- No third party libraries
 - Persistence with User Defaults.
 - Dark mode support
 
