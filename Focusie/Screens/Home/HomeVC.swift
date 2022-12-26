@@ -21,6 +21,7 @@ final class HomeVC: UIViewController {
     
     private var bannerView: GADBannerView!
     private var interstitial: GADInterstitialAd?
+    private var adCounter = 0
     
     //MARK: - Properties
     var viewModel: HomeViewModelProtocol!
@@ -43,12 +44,13 @@ final class HomeVC: UIViewController {
             viewModel.startTimer()
         }
         else {
-            let randomInt = Int.random(in: 0...4)
-            if  randomInt == 1 || randomInt == 3 {
-                view.isUserInteractionEnabled = false
-                loadInterstitialAdd()
-            }
             viewModel.pauseTimer()
+            adCounter += 1
+            if adCounter == 6 {
+                adCounter = 0
+                loadInterstitialAdd()
+                view.isUserInteractionEnabled = false
+            }
         }
     }
     

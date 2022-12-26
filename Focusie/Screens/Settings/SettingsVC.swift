@@ -21,7 +21,6 @@ final class SettingsVC: UIViewController {
     private let longBreakTimeSliderLabel = FCTitleLabel(alignment: .left, fontSize: 15)
     
     private var tableView: UITableView!
-    private var bannerView: GADBannerView!
     
     //MARK: - Properties
     var viewModel: SettingsViewModelProtocol!
@@ -37,7 +36,6 @@ final class SettingsVC: UIViewController {
         layoutShortBreakTimeSettings()
         layoutLongBreakTimeSettings()
         createTableView()
-        configureBanner()
         
         viewModel.load()
     }
@@ -237,32 +235,6 @@ extension SettingsVC {
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
-    
-    private func configureBanner() {
-        bannerView = GADBannerView(adSize: GADAdSizeBanner)
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        
-        NSLayoutConstraint.activate([
-            bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bannerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
-        ])
-        
-        bannerView.adUnitID = AddMobKeys.settingsBannerID
-        bannerView.rootViewController = self
-        bannerView.delegate = self
-        bannerView.load(GADRequest())
-    }
 }
 
-//MARK: - Banner adds delegate
-extension SettingsVC: GADBannerViewDelegate {
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        bannerView.alpha = 0
-        UIView.animate(withDuration: 0.5, animations: {
-            bannerView.alpha = 1
-        })
-    }
-}
 

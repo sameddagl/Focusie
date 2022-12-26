@@ -31,9 +31,7 @@ final class LocalNotificationManager: LocalNotificationManagerProtocol {
     private var notifications = [LocalNotification]()
     
     private func requestPermission() -> Void {
-        UNUserNotificationCenter
-            .current()
-            .requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 if granted == true && error == nil {
                     // We have permission!
                 }
