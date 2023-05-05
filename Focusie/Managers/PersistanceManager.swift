@@ -39,10 +39,8 @@ final class PersistanceManager: PersistanceManagerProtocol {
         guard let value = defaults.value(forKey: Keys.bgSound.rawValue) as? String else { return nil }
         return value
     }
-
     
     func saveBGSound(bgSound: BGSound) {
         defaults.set(bgSound.sound.rawValue, forKey: Keys.bgSound.rawValue)
     }
-
 }

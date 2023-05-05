@@ -12,7 +12,7 @@ protocol AudioManagerProtocol {
     func playOneTimeSound()
     func stopPlayingOneTimeSound()
     func playBackgroundSound(with sound: BGSounds)
-    func pausePlayingBackgroundSound()
+    func pauseBackgroundSound()
     func endPlayingBackgroundSound()
 }
 
@@ -58,9 +58,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
     //MARK: - Play BG Sounds
     func playBackgroundSound(with sound: BGSounds) {
         bgPlayer = nil
-        
-        if sound.rawValue.isEmpty { return }
-        
+                
         guard let path = Bundle.main.path(forResource: sound.rawValue, ofType:"mp3") else { return }
         let url = URL(fileURLWithPath: path)
 
@@ -87,7 +85,7 @@ final class AudioManager: NSObject, AudioManagerProtocol {
         }
     }
     
-    func pausePlayingBackgroundSound() {
+    func pauseBackgroundSound() {
         currentTime = bgPlayer?.currentTime
         bgPlayer?.pause()
         bgPlayer = nil

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 extension UIView {
     func pinToEdges(of view: UIView) {

@@ -88,7 +88,7 @@ final class HomeViewModel: HomeViewModelProtocol {
         timer?.invalidate()
         timer = nil
         
-        audioPlayer.pausePlayingBackgroundSound()
+        audioPlayer.pauseBackgroundSound()
     }
     
     func endTimer() {

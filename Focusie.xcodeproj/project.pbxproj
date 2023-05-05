@@ -14,7 +14,6 @@
 		2C63D2732938E0BB00B3B615 /* FCStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63D2722938E0BB00B3B615 /* FCStopButton.swift */; };
 		2C7D586C29390DA100AE5668 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D586B29390DA100AE5668 /* AppContainer.swift */; };
 		2C7D586E29391B2800AE5668 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D586D29391B2800AE5668 /* Constants.swift */; };
-		2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7B2937D0A200D0326F /* AppRouter.swift */; };
 		2C805A7E2937D31D00D0326F /* FCStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7D2937D31D00D0326F /* FCStateView.swift */; };
 		2C805A802937D36400D0326F /* FCTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A7F2937D36400D0326F /* FCTitleLabel.swift */; };
 		2C805A832937D3B300D0326F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C805A822937D3B300D0326F /* UIView+Ext.swift */; };
@@ -71,7 +70,6 @@
 		2C63D2722938E0BB00B3B615 /* FCStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStopButton.swift; sourceTree = "<group>"; };
 		2C7D586B29390DA100AE5668 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		2C7D586D29391B2800AE5668 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		2C805A7B2937D0A200D0326F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		2C805A7D2937D31D00D0326F /* FCStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStateView.swift; sourceTree = "<group>"; };
 		2C805A7F2937D36400D0326F /* FCTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTitleLabel.swift; sourceTree = "<group>"; };
 		2C805A822937D3B300D0326F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 		2C805A7A2937D09C00D0326F /* App */ = {
 			isa = PBXGroup;
 			children = (
-				2C805A7B2937D0A200D0326F /* AppRouter.swift */,
 				2C7D586B29390DA100AE5668 /* AppContainer.swift */,
 			);
 			path = App;
@@ -450,7 +447,6 @@
 				2CE430892940A778002F5D64 /* SoundSettingsBuilder.swift in Sources */,
 				2C7D586C29390DA100AE5668 /* AppContainer.swift in Sources */,
 				2CEE73AF2938953900EDB109 /* AudioManager.swift in Sources */,
-				2C805A7C2937D0A200D0326F /* AppRouter.swift in Sources */,
 				2C805A832937D3B300D0326F /* UIView+Ext.swift in Sources */,
 				2CB2B9DC29367E4C00C71FD3 /* AppDelegate.swift in Sources */,
 				2CB2B9DE29367E4C00C71FD3 /* SceneDelegate.swift in Sources */,
@@ -621,7 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 49Z33V7QZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
@@ -639,7 +635,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagli.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -657,7 +653,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 49Z33V7QZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Focusie/Info.plist;
@@ -675,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameddagli.Focusie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

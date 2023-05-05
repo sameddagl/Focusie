@@ -14,9 +14,8 @@ import GoogleMobileAds
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UINavigationBar.appearance().tintColor = .systemGreen
-        
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["ca94344591410b4fa5425b2d265b9450"]
         requestTrackingPermission()
-        
         return true
     }
     

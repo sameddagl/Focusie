@@ -18,7 +18,7 @@ import Foundation
 
 final class SoundSettingsViewModel: SoundSettingsViewModelProtocol {
     weak var delegate: SoundSettingsViewModelDelegate?
-    var persistanceManager: PersistanceManagerProtocol
+    private var persistanceManager: PersistanceManagerProtocol
     
     init(persistanceManager: PersistanceManagerProtocol) {
         self.persistanceManager = persistanceManager
@@ -34,7 +34,7 @@ final class SoundSettingsViewModel: SoundSettingsViewModelProtocol {
     ]
 
     func load() {
-        guard let selectedBG = persistanceManager.retrieveBGSound() else{
+        guard let selectedBG = persistanceManager.retrieveBGSound() else {
             bgSounds[0].isSelected = true
             delegate?.handleOutput(output: .updateSounds(sounds: bgSounds))
             return
